@@ -76,8 +76,8 @@ a:hover, a:focus, a:active {
 }
 
 .yellow-theme .widget .widget-title {
-  color: #232C3B;
-  border-color: #58B8C4;
+  color: #ffcc00;
+  border-color: #59B8CE;
 }
 
 .yellow-theme .widget .button {
@@ -346,7 +346,7 @@ a:hover, a:focus, a:active {
 }
 
 .theme-red .widget .widget-title {
-  color: #232C3B;
+  color: #FF4818;
   border-color: #FF4818;
 }
 

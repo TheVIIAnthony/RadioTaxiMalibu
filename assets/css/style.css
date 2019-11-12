@@ -8758,3 +8758,11 @@ object {
   padding: 20px 0 60px;
 }
 
+ #map {
+    height: 100%;
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }

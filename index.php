@@ -43,245 +43,233 @@
         <!-- RS5.4 Layers and Navigation Styles -->
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/navigation.css">
+        <style>
+  /* Always set the map height explicitly to define the size of the div
+  * element that contains the map. */
+  #map {
+    height: 600px;
+    width: 100%;
+}
+</style>
+</head>
 
-    </head>
-
-    <body>
-        <!-- ====== Header Top Area ====== --> 
-        <header class="header-top-area bg-nero">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-7 hidden-xs">
-                        <div class="header-content-left">
-                            <ul class="header-top-menu">
-                                <li>
-                                    <a href="#" class="top-left-menu">
-                                        <i class="fa fa-phone"></i>
-                                        <span>Llámanos - 229 981 9980</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="top-left-menu">
-                                        <i class="fa fa-envelope"></i>
-                                        <span>radiotaximalibu@gmail.com</span>
-                                    </a>                                 
-                                </li>
-                            </ul><!-- /.header-top-menu -->
-                        </div><!-- /.header-content-left -->
-                    </div><!-- /.col-md-9 -->
-
-                    <div class="col-md-6 col-sm-5">
-                        <div class="header-content-right">
-
-                            <ul class="header-top-menu">
-                                <li>
-                                    <a href="#" class="search-open">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="trigger-overlay">
-                                        <i class="fa fa-bars"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div><!-- /.left-content -->
-                    </div><!-- /.col-md-3 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </header><!-- /.head-area -->
-
-        <!-- ======= Header Modal Area =======-->
-        <div class="header-modal-area">
-            <!-- Modal Search -->
-            <div class="overlay overlay-scale">
-                <button type="button" class="overlay-close">&#x2716;</button>
-                <div class="overlay__content">
-                    <form id="search-form" class="search-form outer" action="#" method="post">
-                        <div class="input-group">
-                            <input type="text" class=" input--full" placeholder="search text here ..."> 
-                        </div>
-                        <button class="btn text-uppercase search-button">Search</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="overlay-sidebar">
-                <div class="author-area">
-                    <a href="#" class="closebtn">&times;</a>
-                    <div class="author-area-content">                
-                        <div class="login-author">   
-                            <div class="author-info">                    
-                                <div class="author-image yellow-border">
-                                    <img src="https://htmlguru.net/carrent-html/assets/images/driver/driver-03.png" alt="author-image" />
-                                </div><!-- /.author-image -->
-                                <div class="author-des">
-                                    <h4 class="author-name">Mr. Johan Smith</h4>
-                                    <p class="author-description">Programmer</p>
-                                </div><!-- /.author-des -->
-                            </div><!-- /.author-info -->             
-                            <div class="author-menu">
-                                <ul class="yellow-color">
-                                    <li><a href=""><i class="fa fa-user-circle-o"></i>Author Dashboard</a></li>
-                                    <li><a href=""><i class="fa fa-envelope-open"></i>Your Inbox</a></li>
-                                    <li><a href=""><i class="fa fa-location-arrow"></i>Track your texi</a></li>
-                                    <li><a href=""><i class="fa fa-area-chart"></i>Your Bookings Status</a></li>
-                                    <li><a href=""><i class="fa fa-automobile"></i>New Bookings</a></li>
-                                    <li><a href=""><i class="fa fa-archive"></i>Your Bookings</a></li>
-                                    <li><a href=""><i class="fa fa-money"></i>Your Deposit - $150.00</a></li>
-                                    <li><a href=""><i class="fa fa-sign-out"></i>Sign Out</a></li>
-                                </ul>
-                            </div><!-- /.author-menu -->
-                        </div><!-- /.login-author -->
-                    </div><!-- /.author-area-content -->
-                </div><!-- /.author-area -->
-            </div><!-- /.overlay-sidebar -->
-        </div><!-- /.header-modal-area -->
-
-        <!-- ====== Header Nav Area ====== --> 
-        <header class="header-nav-area">
-            <div class="container">        
-                <div class="row">
-                    <div class="col-md-3 col-sm-10 col-xs-10">
-                        <div class="site-logo" >
-                            <a href="index.html"><img src="assets/images/rtm-logo.jpg" alt="" width="40%"/></a>
-                        </div><!-- /.logo -->
-                    </div><!-- /.col-md-3 -->
-                    <div class="col-md-9 col-sm-2 col-xs-2 pd-right-0 ">
-                        <nav class="site-navigation top-navigation nav-style-one">
-                            <div class="menu-wrapper">
-                                <div class="menu-content">
-                                    <ul class="menu-list">
-                                        <li>
-                                            <a href="#">Inicio</a>
-                                            <ul class="sub-menu">
-                                                <li>
-                                                    <a href="index.html">Home Layout One</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index02.html">Home Layout Two</a>
-                                                </li>                                            
-                                                <li>
-                                                    <a href="index03.html">Home Layout Three</a>
-                                                </li>                                            
-                                                <li>
-                                                    <a href="index04.html">Home Layout Four</a>
-                                                </li>                                            
-                                                <li>
-                                                    <a href="index05.html">Home Layout Five</a>
-                                                </li>                                            
-                                                <li>
-                                                    <a href="index06.html">Home Layout Six</a>
-                                                </li>                                            
-                                                <li>
-                                                    <a href="index07.html">Home Layout Seven</a>
-                                                </li>                                            
-                                                <li>
-                                                    <a href="index08.html">Home Layout Eight</a>
-                                                </li>
-                                                <li>
-                                                    <a href="index09.html">Home Layout Nine</a>
-                                                </li>                   
-                                                <li>
-                                                    <a href="index10.html">Home Layout Ten</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="car-single-page.html">Reservación</a>
-                                        </li>
-                                        <li>
-                                            <a href="about.html">Sobre Nosotros</a>
-                                        </li>
-                                        <li>
-                                            <a href="contact.html">Contacto</a>
-                                        </li>
-                                    </ul> <!-- /.menu-list -->
-                                </div> <!-- /.menu-content-->
-                            </div> <!-- /.menu-wrapper --> 
-                        </nav><!-- /.site-navigation -->
-                        <!--Mobile Main Menu-->
-                        <div class="mobile-menu-main hidden-md hidden-lg">
-                            <div class="menucontent overlaybg"> </div>
-                            <div class="menuexpandermain slideRight">
-                                <a id="navtoggole-main" class="animated-arrow slideLeft menuclose">
-                                    <span></span>
+<body>
+    <!-- ====== Header Top Area ====== --> 
+    <header class="header-top-area bg-nero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-7 hidden-xs">
+                    <div class="header-content-left">
+                        <ul class="header-top-menu">
+                            <li>
+                                <a href="#" class="top-left-menu">
+                                    <i class="fa fa-phone"></i>
+                                    <span>Llámanos - 229 981 9980</span>
                                 </a>
-                            </div><!--/.menuexpandermain-->
+                            </li>
+                            <li>
+                                <a href="#" class="top-left-menu">
+                                    <i class="fa fa-envelope"></i>
+                                    <span>radiotaximalibu@gmail.com</span>
+                                </a>                                 
+                            </li>
+                        </ul><!-- /.header-top-menu -->
+                    </div><!-- /.header-content-left -->
+                </div><!-- /.col-md-9 -->
 
-                            <div id="mobile-main-nav" class="mb-navigation slideLeft">
-                                <div class="menu-wrapper">
-                                    <div id="main-mobile-container" class="menu-content clearfix"></div>
-                                </div>
-                            </div><!--/#mobile-main-nav-->
-                        </div><!--/.mobile-menu-main-->
-                    </div><!-- /.col-md-9 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </header><!-- /.header-bottom-area -->
+                <div class="col-md-6 col-sm-5">
+                    <div class="header-content-right">
 
-        <!-- ======= Main Slider Area =======-->
-        <div class="slider-block">   
-            <div class="rev_slider_wrapper">
-                <div class="rev_slider carrent-slider">
-                    <ul>
-                        <!-- slide 1 --> 
-                        <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
+                        <ul class="header-top-menu">
+                            <li>
+                                <a href="#" class="search-open">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="trigger-overlay">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div><!-- /.left-content -->
+                </div><!-- /.col-md-3 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </header><!-- /.head-area -->
 
-                            <!-- main image -->
-                            <img src="https://htmlguru.net/carrent-html/assepts/images/slider-car/slider-bg.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                            p
-                            <!-- layer no 1 -->
-                            <div class="tp-caption tp-resizeme rev-subheading"
-                            data-type="text" 
-                            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-85']" 
-                            data-y="['middle']" data-voffset="['-163','-163','-130','-130']"
-                            data-fontsize="['22','22','22','22']"
-                            data-lineheight="['30','30','30','30']"
-                            data-width="none"
-                            data-height="none"
-                            data-whitespace="nowrap"
-                            data-transform_idle="o:1;"
-                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
-                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
-                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-                            data-start="800" 
-                            data-splitin="none" 
-                            data-splitout="none" 
-                            data-responsive_offset="on"
-                            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">El descuento es para ti
-                        </div>
+    <!-- ======= Header Modal Area =======-->
+    <div class="header-modal-area">
+        <!-- Modal Search -->
+        <div class="overlay overlay-scale">
+            <button type="button" class="overlay-close">&#x2716;</button>
+            <div class="overlay__content">
+                <form id="search-form" class="search-form outer" action="#" method="post">
+                    <div class="input-group">
+                        <input type="text" class=" input--full" placeholder="search text here ..."> 
+                    </div>
+                    <button class="btn text-uppercase search-button">Search</button>
+                </form>
+            </div>
+        </div>
 
-                        <!-- layer no 2 -->
+        <div class="overlay-sidebar">
+            <div class="author-area">
+                <a href="#" class="closebtn">&times;</a>
+                <div class="author-area-content">                
+                    <div class="login-author">   
+                        <div class="author-info">                    
+                            <div class="author-image yellow-border">
+                                <img src="https://htmlguru.net/carrent-html/assets/images/driver/driver-03.png" alt="author-image" />
+                            </div><!-- /.author-image -->
+                            <div class="author-des">
+                                <h4 class="author-name">Mr. Johan Smith</h4>
+                                <p class="author-description">Programmer</p>
+                            </div><!-- /.author-des -->
+                        </div><!-- /.author-info -->             
+                        <div class="author-menu">
+                            <ul class="yellow-color">
+                                <li><a href=""><i class="fa fa-user-circle-o"></i>Author Dashboard</a></li>
+                                <li><a href=""><i class="fa fa-envelope-open"></i>Your Inbox</a></li>
+                                <li><a href=""><i class="fa fa-location-arrow"></i>Track your texi</a></li>
+                                <li><a href=""><i class="fa fa-area-chart"></i>Your Bookings Status</a></li>
+                                <li><a href=""><i class="fa fa-automobile"></i>New Bookings</a></li>
+                                <li><a href=""><i class="fa fa-archive"></i>Your Bookings</a></li>
+                                <li><a href=""><i class="fa fa-money"></i>Your Deposit - $150.00</a></li>
+                                <li><a href=""><i class="fa fa-sign-out"></i>Sign Out</a></li>
+                            </ul>
+                        </div><!-- /.author-menu -->
+                    </div><!-- /.login-author -->
+                </div><!-- /.author-area-content -->
+            </div><!-- /.author-area -->
+        </div><!-- /.overlay-sidebar -->
+    </div><!-- /.header-modal-area -->
+
+    <!-- ====== Header Nav Area ====== --> 
+    <header class="header-nav-area">
+        <div class="container">        
+            <div class="row">
+                <div class="col-md-3 col-sm-10 col-xs-10">
+                    <div class="site-logo" >
+                        <a href="index.html"><img src="assets/images/rtm-logo.jpg" alt="" width="40%"/></a>
+                    </div><!-- /.logo -->
+                </div><!-- /.col-md-3 -->
+                <div class="col-md-9 col-sm-2 col-xs-2 pd-right-0 ">
+                    <nav class="site-navigation top-navigation nav-style-one">
+                        <div class="menu-wrapper">
+                            <div class="menu-content">
+                                <ul class="menu-list">
+                                    <li>
+                                        <a href="#">Inicio</a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="index.html">Home Layout One</a>
+                                            </li>
+                                            <li>
+                                                <a href="index02.html">Home Layout Two</a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="index03.html">Home Layout Three</a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="index04.html">Home Layout Four</a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="index05.html">Home Layout Five</a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="index06.html">Home Layout Six</a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="index07.html">Home Layout Seven</a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="index08.html">Home Layout Eight</a>
+                                            </li>
+                                            <li>
+                                                <a href="index09.html">Home Layout Nine</a>
+                                            </li>                   
+                                            <li>
+                                                <a href="index10.html">Home Layout Ten</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="car-single-page.html">Reservación</a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">Sobre Nosotros</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html">Contacto</a>
+                                    </li>
+                                </ul> <!-- /.menu-list -->
+                            </div> <!-- /.menu-content-->
+                        </div> <!-- /.menu-wrapper --> 
+                    </nav><!-- /.site-navigation -->
+                    <!--Mobile Main Menu-->
+                    <div class="mobile-menu-main hidden-md hidden-lg">
+                        <div class="menucontent overlaybg"> </div>
+                        <div class="menuexpandermain slideRight">
+                            <a id="navtoggole-main" class="animated-arrow slideLeft menuclose">
+                                <span></span>
+                            </a>
+                        </div><!--/.menuexpandermain-->
+
+                        <div id="mobile-main-nav" class="mb-navigation slideLeft">
+                            <div class="menu-wrapper">
+                                <div id="main-mobile-container" class="menu-content clearfix"></div>
+                            </div>
+                        </div><!--/#mobile-main-nav-->
+                    </div><!--/.mobile-menu-main-->
+                </div><!-- /.col-md-9 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </header><!-- /.header-bottom-area -->
+
+
+    <!-- ======= Main Slider Area =======-->
+    <div class="slider-block">   
+        <div class="rev_slider_wrapper">
+            <div class="rev_slider carrent-slider">
+                <ul>
+                    <!-- slide 1 --> 
+                    <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
+
+                        <!-- main image -->
+                        <img src="https://htmlguru.net/carrent-html/assepts/images/slider-car/slider-bg.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                        p
+                        <!-- layer no 1 -->
                         <div class="tp-caption tp-resizeme rev-subheading"
                         data-type="text" 
-                        data-x="['left','left','left','center']" data-hoffset="['102','102','75','-75']" 
-                        data-y="['middle']" data-voffset="['-110','-110','-90','-90']"
+                        data-x="['left','left','left','center']" data-hoffset="['105','105','75','-85']" 
+                        data-y="['middle']" data-voffset="['-163','-163','-130','-130']"
+                        data-fontsize="['22','22','22','22']"
+                        data-lineheight="['30','30','30','30']"
+                        data-width="none"
+                        data-height="none"
                         data-whitespace="nowrap"
                         data-transform_idle="o:1;"
-                        data-fontsize="['50','50','35','35']"
-                        data-lineheight="['60','60','60','60']"
                         data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
                         data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
                         data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
                         data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-                        data-start="1000" 
+                        data-start="800" 
                         data-splitin="none" 
                         data-splitout="none" 
                         data-responsive_offset="on"
-                        style="z-index: 6; color: #e91e22; font-family: 'Exo', sans-serif; font-weight: 800;">Necesitas un aventón?
+                        style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">El descuento es para ti
                     </div>
 
-                    <!-- layer no 3 -->
-                    <div class="tp-caption tp-resizeme NotGeneric-Title"
+                    <!-- layer no 2 -->
+                    <div class="tp-caption tp-resizeme rev-subheading"
                     data-type="text" 
-                    data-x="['left','left','left','center']" data-hoffset="['103','103','75','0']" 
-                    data-y="['middle']" data-voffset="['0']"
+                    data-x="['left','left','left','center']" data-hoffset="['102','102','75','-75']" 
+                    data-y="['middle']" data-voffset="['-110','-110','-90','-90']"
                     data-whitespace="nowrap"
                     data-transform_idle="o:1;"
                     data-fontsize="['50','50','35','35']"
-                    data-lineheight="['75','75','60','60']"
+                    data-lineheight="['60','60','60','60']"
                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
@@ -290,69 +278,89 @@
                     data-splitin="none" 
                     data-splitout="none" 
                     data-responsive_offset="on"
-                    style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 900; text-transform: uppercase;">Escoge<br> El taxi mas cómodo
+                    style="z-index: 6; color: #e91e22; font-family: 'Exo', sans-serif; font-weight: 800;">Necesitas un aventón?
                 </div>
 
-                <!-- layer no 4 -->
-                <div class="tp-caption rev-subheading tp-resizeme"
+                <!-- layer no 3 -->
+                <div class="tp-caption tp-resizeme NotGeneric-Title"
                 data-type="text" 
-                data-x="['left','left','left','center']" data-hoffset="['105','105','75','-28']" 
-                data-y="['middle']" data-voffset="['95','95','75','75']"
-                data-fontsize="['24']"
-                data-lineheight="['20']"
-                data-width="none"
-                data-height="none"
+                data-x="['left','left','left','center']" data-hoffset="['103','103','75','0']" 
+                data-y="['middle']" data-voffset="['0']"
                 data-whitespace="nowrap"
                 data-transform_idle="o:1;"
+                data-fontsize="['50','50','35','35']"
+                data-lineheight="['75','75','60','60']"
                 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
                 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
                 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-                data-start="800" 
+                data-start="1000" 
                 data-splitin="none" 
                 data-splitout="none" 
                 data-responsive_offset="on"
-                style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">El mejor método de viajar seguro
+                style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 900; text-transform: uppercase;">Escoge<br> El taxi mas cómodo
             </div>
 
-            <!-- layer no 5 -->
-            <div class="tp-caption tp-resizeme"
-            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-105']" 
-            data-y="['middle']" data-voffset="['150','150','135','120']"
-            data-fontsize="['22']"
-            data-lineheight="['45']"
+            <!-- layer no 4 -->
+            <div class="tp-caption rev-subheading tp-resizeme"
+            data-type="text" 
+            data-x="['left','left','left','center']" data-hoffset="['105','105','75','-28']" 
+            data-y="['middle']" data-voffset="['95','95','75','75']"
+            data-fontsize="['24']"
+            data-lineheight="['20']"
             data-width="none"
             data-height="none"
             data-whitespace="nowrap"
             data-transform_idle="o:1;"
-            data-style_hover="cursor:default;"
             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
-            data-transform_out="y:[100%];s:600;e:Power2.easeInOut;s:600;e:Power2.easeInOut;" 
+            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
             data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
             data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-            data-start="1200" 
+            data-start="800" 
             data-splitin="none" 
             data-splitout="none" 
             data-responsive_offset="on"
-            style="z-index: 7; font-weight: bold; font-family: 'Exo', sans-serif;">
-            <a href="#" class="button black-button slider-button" data-fontsize="['22','22','22','22']">Contacta ahora</a>
+            style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">El mejor método de viajar seguro
         </div>
 
-        <!-- layer no 6 -->
+        <!-- layer no 5 -->
         <div class="tp-caption tp-resizeme"
-        data-x="['right','right','right','center']" data-hoffset="['0','-15','30','-10']"
-        data-y="['middle','middle','middle','bottom']" data-voffset="['15','15','0','0']"
-        data-transform_idle="o:1;" 
-        data-visibility="['on','on','on','off']"
-        data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:300;e:Power3.easeInOut;" data-transform_out="auto:auto;s:600;" 
-        data-splitin="none"
-        data-start="1500"
-        data-type="image"
-        data-responsive_offset="on"
+        data-x="['left','left','left','center']" data-hoffset="['105','105','75','-105']" 
+        data-y="['middle']" data-voffset="['150','150','135','120']"
+        data-fontsize="['22']"
+        data-lineheight="['45']"
         data-width="none"
-        data-height="none" data-no-retina>
-        <img src="https://htmlguru.net/carrent-html/assets/images/dummy.png" alt="" data-lazyload="https://htmlguru.net/carrent-html/assets/images/slider-car/slider-car-01.png" data-ww="['805','805','500','350']" data-hh="['auto']" >
+        data-height="none"
+        data-whitespace="nowrap"
+        data-transform_idle="o:1;"
+        data-style_hover="cursor:default;"
+        data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;" 
+        data-transform_out="y:[100%];s:600;e:Power2.easeInOut;s:600;e:Power2.easeInOut;" 
+        data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+        data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+        data-start="1200" 
+        data-splitin="none" 
+        data-splitout="none" 
+        data-responsive_offset="on"
+        style="z-index: 7; font-weight: bold; font-family: 'Exo', sans-serif;">
+        <a href="#" class="button black-button slider-button" data-fontsize="['22','22','22','22']">Contacta ahora</a>
     </div>
+
+    <!-- layer no 6 -->
+    <div class="tp-caption tp-resizeme"
+    data-x="['right','right','right','center']" data-hoffset="['0','-15','30','-10']"
+    data-y="['middle','middle','middle','bottom']" data-voffset="['15','15','0','0']"
+    data-transform_idle="o:1;" 
+    data-visibility="['on','on','on','off']"
+    data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:300;e:Power3.easeInOut;" data-transform_out="auto:auto;s:600;" 
+    data-splitin="none"
+    data-start="1500"
+    data-type="image"
+    data-responsive_offset="on"
+    data-width="none"
+    data-height="none" data-no-retina>
+    <img src="https://htmlguru.net/carrent-html/assets/images/dummy.png" alt="" data-lazyload="https://htmlguru.net/carrent-html/assets/images/slider-car/slider-car-01.png" data-ww="['805','805','500','350']" data-hh="['auto']" >
+</div>
 </li><!-- /.slide 1 -->
 <!-- slide 1 --> 
 <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
@@ -538,89 +546,102 @@ data-height="none" data-no-retina>
 
                                             <!-- Modal body -->
                                             <div class="modal-dialog modal-xl">
-                                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7534.975010796221!2d-96.1727383!3d19.21757410000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1573532063410!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                                            </div>
-
-                                            <!-- Modal footer -->
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                <div id="map">
+                                                    <script>
+                                                        function initMap() {
+                                                          var uluru = {lat: -25.344, lng: 131.036};
+                                                          var map = new google.maps.Map(
+                                                              document.getElementById('map'), {zoom: 4, center: uluru});
+                                                          var marker = new google.maps.Marker({position: uluru, map: map});
+                                                          
+                                                      }
+                                                  </script>
+                                                  <script async defer
+                                                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&callback=initMap">
+                                              </script>
                                           </div>
+                                      </div>
+
+                                      <!-- Modal footer -->
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                       </div>
                                   </div>
                               </div>
                           </div>
-                      </div><!--/.input-->
-                  </div><!--/.col-md-4-->
+                      </div>
+                  </div><!--/.input-->
+              </div><!--/.col-md-4-->
 
-                  <div class="col-md-4">
-                      <label>Origen</label>
-                      <div class="input">
-                          <i class="fa fa-map-marker"></i>
-                          <input type="text" class="pick-location form-controller" placeholder="Selecciona el origen" readonly="">
-                          <div class="text-center">
-                              <button type="submit" class="button" data-toggle="modal" data-target="#seleccionarOrigen">Seleccionar Origen</button>
-                              <div class="modal fade" id="seleccionarOrigen">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
+              <div class="col-md-4">
+                  <label>Origen</label>
+                  <div class="input">
+                      <i class="fa fa-map-marker"></i>
+                      <input type="text" class="pick-location form-controller" placeholder="Selecciona el origen" readonly="">
+                      <div class="text-center">
+                          <button type="submit" class="button" data-toggle="modal" data-target="#seleccionarOrigen">Seleccionar Origen</button>
+                          <div class="modal fade" id="seleccionarOrigen">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
 
-                                          <!-- Modal Header -->
-                                          <div class="modal-header">
-                                              <h4 class="modal-title">Selecciona el origen </h4>
-                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                          </div>
-
-                                          <!-- Modal body -->
-                                          <div class="modal-body">
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7534.975010796221!2d-96.1727383!3d19.21757410000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1573532063410!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                                          </div>
-
-                                          <!-- Modal footer -->
-                                          <div class="modal-footer">
-                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                          </div>
-
+                                      <!-- Modal Header -->
+                                      <div class="modal-header">
+                                          <h4 class="modal-title">Selecciona el origen </h4>
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
                                       </div>
+
+                                      <!-- Modal body -->
+                                      <div class="modal-body">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7534.975010796221!2d-96.1727383!3d19.21757410000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1573532063410!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                   </div>
+
                               </div>
                           </div>
-                      </div><!--/.input-->
-                  </div><!--/.col-md-4-->
+                      </div>
+                  </div>
+              </div><!--/.input-->
+          </div><!--/.col-md-4-->
 
-                  <div class="col-md-4">
-                      <label>Fecha</label>
-                      <div class="input">
-                          <i class="fa fa-calendar"></i>
-                          <input type="text" class="date-start date-selector form-controller" placeholder="dd/mm/aa">
-                      </div><!--/.input-->
-                  </div><!--/.col-md-4-->
+          <div class="col-md-4">
+              <label>Fecha</label>
+              <div class="input">
+                  <i class="fa fa-calendar"></i>
+                  <input type="text" class="date-start date-selector form-controller" placeholder="dd/mm/aa">
+              </div><!--/.input-->
+          </div><!--/.col-md-4-->
 
-                  <!-- <div class="clearfix"></div> -->
+          <!-- <div class="clearfix"></div> -->
+
+          <!-- <div class="col-md-4"> -->
+              <!-- <label>Dropping off location</label> -->
+              <!-- <div class="input"> -->
+                  <!-- <i class="fa fa-map-marker"></i> -->
+                  <!-- <input type="text" placeholder="Off your location" class="drop-location form-controller"> -->
+                  <!-- </div>/.input -->
+                  <!-- </div>/.col-md-4 -->
 
                   <!-- <div class="col-md-4"> -->
-                      <!-- <label>Dropping off location</label> -->
+                      <!-- <label>Dropping off date</label> -->
                       <!-- <div class="input"> -->
-                          <!-- <i class="fa fa-map-marker"></i> -->
-                          <!-- <input type="text" placeholder="Off your location" class="drop-location form-controller"> -->
+                          <!-- <i class="fa fa-calendar"></i> -->
+                          <!-- <input type="text" class="date-end date-selector form-controller" placeholder="dd/mm/yy"> -->
                           <!-- </div>/.input -->
                           <!-- </div>/.col-md-4 -->
 
                           <!-- <div class="col-md-4"> -->
                               <!-- <label>Dropping off date</label> -->
                               <!-- <div class="input"> -->
-                                  <!-- <i class="fa fa-calendar"></i> -->
-                                  <!-- <input type="text" class="date-end date-selector form-controller" placeholder="dd/mm/yy"> -->
+                                  <!-- <i class="fa fa-clock-o"></i> -->
+                                  <!-- <input type="text" class="time-selector form-controller" placeholder="12:00 am"> -->
                                   <!-- </div>/.input -->
                                   <!-- </div>/.col-md-4 -->
-
-                                  <!-- <div class="col-md-4"> -->
-                                      <!-- <label>Dropping off date</label> -->
-                                      <!-- <div class="input"> -->
-                                          <!-- <i class="fa fa-clock-o"></i> -->
-                                          <!-- <input type="text" class="time-selector form-controller" placeholder="12:00 am"> -->
-                                          <!-- </div>/.input -->
-                                          <!-- </div>/.col-md-4 -->
-                                      </div>
-                                  </div>
+                              </div>
+                          </div>
 
                                                   <!-- <div class="advance-search">
                                                   <div class="row">

@@ -1557,7 +1557,7 @@ a:hover, a:active {
     margin: auto;
   }
   .menu-list {
-    margin: 20px auto;
+    margin-top: auto;
     padding: 0;
     width: 100%;
     text-align: center;
@@ -1571,7 +1571,7 @@ a:hover, a:active {
   }
   .top-navigation .menu-list > li > a {
     display: block;
-    padding: 27px 15px;
+    padding: 12px 15px;
     line-height: 1.4;
     font-size: 20px;
     font-weight: 800;

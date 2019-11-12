@@ -528,19 +528,17 @@ data-height="none" data-no-retina>
                     <div class="regular-search">                        
                         <div class="row justify-content-center align-items-center">
                             <div class="col-md-4">
-                                <label>Destino</label>
+                                <label>Origen</label>
                                 <div class="input">
-                                    <i class="fa fa-map-marker"></i>
-                                    <input type="text" placeholder="Busca el destino" class="pick-location form-controller" readonly="">
                                     <div class="text-center">
-                                        <button type="submit" class="button" data-toggle="modal" data-target="#seleecionarDestino">Seleccionar Destino</button>
+                                        <button type="submit" class="button" data-toggle="modal" data-target="#seleecionarDestino">Seleccionar Origen</button>
                                         <div class="modal fade" id="seleecionarDestino">
                                           <div class="modal-dialog">
                                             <div class="modal-content">
 
                                               <!-- Modal Header -->
                                               <div class="modal-header">
-                                                <h4 class="modal-title">Selecciona el Destino</h4>
+                                                <h4 class="modal-title">Selecciona el Origen</h4>
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
 
@@ -550,21 +548,19 @@ data-height="none" data-no-retina>
                                                     <script>
                                                         function initMap() {
                                                           var uluru = {lat: -25.344, lng: 131.036};
-                                                          var map = new google.maps.Map(
-                                                              document.getElementById('map'), {zoom: 4, center: uluru});
+                                                          var map = new google.maps.Map( document.getElementById('map'), {zoom: 4,center: uluru});
                                                           var marker = new google.maps.Marker({position: uluru, map: map});
-                                                          
                                                       }
-                                                  </script>
-                                                  <script async defer
-                                                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&callback=initMap">
-                                              </script>
-                                          </div>
-                                      </div>
+                                                    </script>
+                                                    <script async defer
+                                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&callback=initMap">
+                                                </script>
+                                            </div>
+                                        </div>
 
-                                      <!-- Modal footer -->
-                                      <div class="modal-footer">
-                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
                                       </div>
                                   </div>
                               </div>
@@ -574,19 +570,17 @@ data-height="none" data-no-retina>
               </div><!--/.col-md-4-->
 
               <div class="col-md-4">
-                  <label>Origen</label>
+                  <label>Destino</label>
                   <div class="input">
-                      <i class="fa fa-map-marker"></i>
-                      <input type="text" class="pick-location form-controller" placeholder="Selecciona el origen" readonly="">
                       <div class="text-center">
-                          <button type="submit" class="button" data-toggle="modal" data-target="#seleccionarOrigen">Seleccionar Origen</button>
+                          <button type="submit" class="button" data-toggle="modal" data-target="#seleccionarOrigen">Seleccionar Destino</button>
                           <div class="modal fade" id="seleccionarOrigen">
                               <div class="modal-dialog">
                                   <div class="modal-content">
 
                                       <!-- Modal Header -->
                                       <div class="modal-header">
-                                          <h4 class="modal-title">Selecciona el origen </h4>
+                                          <h4 class="modal-title">Selecciona el destino </h4>
                                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                                       </div>
 
@@ -597,7 +591,7 @@ data-height="none" data-no-retina>
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
                                   </div>
 
                               </div>

@@ -43,11 +43,12 @@
         <!-- RS5.4 Layers and Navigation Styles -->
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/navigation.css">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&libraries=places" type="text/javascript"></script>
         <style>
   /* Always set the map height explicitly to define the size of the div
   * element that contains the map. */
-  #map {
-    height: 600px;
+  #map-canvas {
+    height: 80%;
     width: 100%;
 }
 </style>
@@ -544,17 +545,48 @@ data-height="none" data-no-retina>
 
                                             <!-- Modal body -->
                                             <div class="modal-dialog modal-xl">
-                                                <div id="map">
+                                                    <input type="text" id="mapsearch">
+                                                <div id="map-canvas">
                                                     <script>
-                                                        function initMap() {
-                                                          var uluru = {lat: -25.344, lng: 131.036};
-                                                          var map = new google.maps.Map( document.getElementById('map'), {zoom: 4,center: uluru});
-                                                          var marker = new google.maps.Marker({position: uluru, map: map});
-                                                      }
+                                                    var map = new google.maps.Map(document.getElementById('map-canvas'),{
+                                                        center:{
+                                                            lat: 19.217569,
+                                                            lng: -96.172659
+                                                        },
+                                                        zoom:15
+                                                    });
+                                                    var marker = new google.maps.Marker({
+                                                        position:{
+                                                            lat: 27.72,
+                                                            lng: 85.36
+                                                        },
+                                                        map:map, 
+                                                        draggable : true
+                                                    });
+
+                                                    var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+                                                    google.maps.events.addListener(searchBox, 'placesChanged', function(){
+                                                    var places = searchBox.getPlaces();
+
+                                                    var bounds = new google.maps.LatLngBounds();
+                                                    var i, place;
+                                                    for (i = 0;place = places[i]; i++) {
+
+                                                        bounds.extend(place.geometry.location.lat());
+                                                        marker.setPosition(place.geometry.location.lng());
+
+                                                    }
+                                                    map.fitBounds(bounds);
+                                                    map.setZoom(15);
+
+                                                    });
+                                                    google.maps.event.addListener(marker,'position_changed',function(){
+                                                    var lat = marker.getPosition().lat();
+                                                    var lng = marker.getPosition().lng();
+                                                    $('#lat').val(lat);
+                                                    $('#lng').val(lng);
+                                                    });
                                                     </script>
-                                                    <script async defer
-                                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&callback=initMap">
-                                                </script>
                                             </div>
                                         </div>
 

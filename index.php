@@ -43,7 +43,8 @@
         <!-- RS5.4 Layers and Navigation Styles -->
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/navigation.css">
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&libraries=places" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&libraries=places"></script>
         <style>
   /* Always set the map height explicitly to define the size of the div
   * element that contains the map. */
@@ -546,130 +547,135 @@ data-height="none" data-no-retina>
                                             <!-- Modal body -->
                                             <div class="modal-dialog modal-xl">
                                                 <input type="text" id="mapsearch">
+                                                <br>
                                                 <div id="map-canvas">
                                                     <script>
-                                                        var map = new google.maps.Map(document.getElementById('map-canvas'),{
-                                                            center:{
-                                                                lat: 19.217569,
-                                                                lng: -96.172659
-                                                            },
-                                                            zoom:15
-                                                        });
-                                                        var marker = new google.maps.Marker({
-                                                            position:{
-                                                                lat: 27.72,
-                                                                lng: 85.36
-                                                            },
-                                                            map:map, 
-                                                            draggable : true
-                                                        });
+  //se crea un mapa y un marcador
 
-                                                        var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
-                                                        google.maps.events.addListener(searchBox, 'placesChanged', function(){
-                                                            var places = searchBox.getPlaces();
+  var map = new google.maps.Map(document.getElementById('map-canvas'),{
+      center:{
+       lat: 19.4978,
+       lng: -99.1269
+   },
+   zoom:15
+});
 
-                                                            var bounds = new google.maps.LatLngBounds();
-                                                            var i, place;
-                                                            for (i = 0;place = places[i]; i++) {
+  var marker = new google.maps.Marker({
+   map:map,
+   draggable: false
+});
 
-                                                                bounds.extend(place.geometry.location.lat());
-                                                                marker.setPosition(place.geometry.location.lng());
+//ese codigo se ejecuta para conseguir la ubicacion del usuario
+if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(function (position) {
+     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     map.setCenter(initialLocation);
+     marker.setPosition(initialLocation);         
+ });
+}
 
-                                                            }
-                                                            map.fitBounds(bounds);
-                                                            map.setZoom(15);
+//aqui se crea un searchbox para busqueda de autocompletado
+var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
 
-                                                        });
-                                                        google.maps.event.addListener(marker,'position_changed',function(){
-                                                            var lat = marker.getPosition().lat();
-                                                            var lng = marker.getPosition().lng();
-                                                            $('#lat').val(lat);
-                                                            $('#lng').val(lng);
-                                                        });
-                                                    </script>
-                                                </div>
-                                            </div>
+google.maps.event.addListener(searchBox, 'places_changed',function(){
 
-                                            <!-- Modal footer -->
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div><!--/.input-->
-                  </div><!--/.col-md-4-->
+ var places = searchBox.getPlaces();
 
-                  <div class="col-md-4">
-                      <label style="color: black">Destino</label>
-                      <div class="input">
-                          <div class="text-center">
-                              <button type="submit" class="button" data-toggle="modal" data-target="#seleccionarOrigen" style="background-color: #59B8CE; color: black">Seleccionar Destino</button>
-                              <div class="modal fade" id="seleccionarOrigen">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
+ var bounds = new google.maps.LatLngBounds();
+ var i, place;
 
-                                          <!-- Modal Header -->
-                                          <div class="modal-header">
-                                              <h4 class="modal-title">Selecciona el destino </h4>
-                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                          </div>
+ for(i=0; place=places[i];i++){
+  bounds.extend(place.geometry.location);
+  marker.setPosition(place.geometry.location);
+}
+map.fitBounds(bounds);
+map.setZoom(15);
+})
 
-                                          <!-- Modal body -->
-                                          <div class="modal-body">
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7534.975010796221!2d-96.1727383!3d19.21757410000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1573532063410!5m2!1ses-419!2smx" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                                        </div>
+</script>
+</div>
+</div>
 
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
-                                      </div>
+<!-- Modal footer -->
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><!--/.input-->
+</div><!--/.col-md-4-->
 
-                                  </div>
-                              </div>
-                          </div>
+<div class="col-md-4">
+  <label style="color: black">Destino</label>
+  <div class="input">
+      <div class="text-center">
+          <button type="submit" class="button" data-toggle="modal" data-target="#seleccionarOrigen" style="background-color: #59B8CE; color: black">Seleccionar Destino</button>
+          <div class="modal fade" id="seleccionarOrigen">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                          <h4 class="modal-title">Selecciona el destino </h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
-                  </div><!--/.input-->
-              </div><!--/.col-md-4-->
 
-              <div class="col-md-4">
-                  <label style="color: black">Fecha</label>
-                  <div class="input">
-                      <i class="fa fa-calendar"></i>
-                      <input type="text" class="date-start date-selector form-controller" placeholder="dd/mm/aa">
-                  </div><!--/.input-->
-              </div><!--/.col-md-4-->
+                      <!-- Modal body -->
+                      <div class="modal-body">
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
+                  </div>
+
+              </div>
           </div>
       </div>
-      <div class="check-vehicle-footer">
-          <div class="col text-center">                            
-              <button type="submit" class="button" style="background-color: #59B8CE">Programar</button>
-          </div><!-- /.row -->
-      </div><!-- /.check-vehicle-footer -->
-  </form><!-- /.advance_search_query -->
+  </div>
+</div><!--/.input-->
+</div><!--/.col-md-4-->
+
+<div class="col-md-4">
+  <label style="color: black">Fecha</label>
+  <div class="input">
+      <i class="fa fa-calendar"></i>
+      <input type="text" class="date-start date-selector form-controller" placeholder="dd/mm/aa">
+  </div><!--/.input-->
+</div><!--/.col-md-4-->
+</div>
+</div>
+<div class="check-vehicle-footer">
+  <div class="col text-center">                            
+      <button type="submit" class="button" style="background-color: #59B8CE">Programar</button>
+  </div><!-- /.row -->
+</div><!-- /.check-vehicle-footer -->
+</form><!-- /.advance_search_query -->
 </div><!-- /.col-md-8 -->
 </div><!-- /.row -->
 </div><!--/.container -->
 </div><!-- /.check-vehicle-block-->
 
-  <!-- ======footer area======= -->
-  <div class="container footer-top-border">
-      <div class="vehicle-multi-border yellow-black"></div><!-- /.vehicle-multi-border -->
-  </div><!-- /.container -->
+<!-- ======footer area======= -->
+<div class="container footer-top-border">
+  <div class="vehicle-multi-border yellow-black"></div><!-- /.vehicle-multi-border -->
+</div><!-- /.container -->
 
-  <footer class="footer-block bg-black" style="background-color: #59B8CE">
-      <div class="container">
-          <!-- footer-top-block -->
-          <div class="footer-top-block yellow-theme">            
-              <div class="row">
-                  <div class="col-md-5 col-sm-6">
-                      <div class="widget widget_about">    
-                          <h3 class="widget-title">
-                              Sobre nosotros 
-                          </h3><!-- /.widget-title -->
-                          <div class="widget-about-content">
-                              <img src="assets/images/RTM logo fb.png" alt="logo" height="40" /></p>
+<footer class="footer-block bg-black" style="background-color: #59B8CE">
+  <div class="container">
+      <!-- footer-top-block -->
+      <div class="footer-top-block yellow-theme">            
+          <div class="row">
+              <div class="col-md-5 col-sm-6">
+                  <div class="widget widget_about">    
+                      <h3 class="widget-title">
+                          Sobre nosotros 
+                      </h3><!-- /.widget-title -->
+                      <div class="widget-about-content">
+                          <img src="assets/images/RTM logo fb.png" alt="logo" height="40" /></p>
                           <a href="#" class="button" style="color: black">Más</a>
                       </div><!-- /.widget-content -->
                   </div><!-- /.widget widget_about -->

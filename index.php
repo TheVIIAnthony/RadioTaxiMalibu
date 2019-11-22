@@ -514,64 +514,33 @@ data-height="none" data-no-retina>
 </div><!-- /.section-divider -->
 
 <!-- ====== Check Vehicle Area ====== --> 
-<div class="check-vehicle-block" style="background-color: #FFC012">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="check-content">
-                    <h4 class="top-subtitle" style="color: white">Busca tu Taxi</h4>
-                    <h2 class="title blue-color">Por rango de disponibilidad</h2>
-                    <h3 class="subtitle" style="color: white">Encuentra tu mejor taxi</h3>
-                </div><!-- /.check-content -->
-            </div><!-- col-md-4 -->
-
-            <div class="col-md-8">
-                <form action="#" method="get" class="advance-search-query input-night-rider yellow-theme">
-                    <div class="regular-search">                        
-                        <div class="row justify-content-center align-items-center">
-                            <div class="col-md-4">
-                                <label style="color: black">Origen</label>
-                                <div class="input">
-                                    <div class="text-center">
-                                        <button type="submit" class="button" data-toggle="modal" data-target="#seleecionarDestino" style="background-color: #59B8CE; color: black">Seleccionar Origen</button>
-                                        <div class="modal fade" id="seleecionarDestino">
-                                          <div class="modal-dialog">
-                                            <div class="modal-content">
-
-                                              <!-- Modal Header -->
-                                              <div class="modal-header">
-                                                <h4 class="modal-title">Selecciona el Origen</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-
-                                            <!-- Modal body -->
-                                            <div class="modal-dialog modal-xl">
-                                                <input type="text" id="mapsearch">
-                                                <br>
-                                                <div id="map-canvas">
-                                                    <script>
+<div style="background-color: #FFC012">
+    <input type="text" id="mapsearch">
+    <br>
+    <div id="map-canvas">
+        <script>
   //se crea un mapa y un marcador
 
   var map = new google.maps.Map(document.getElementById('map-canvas'),{
       center:{
-       lat: 19.4978,
-       lng: -99.1269
-   },
-   zoom:15
-});
+         lat: 19.4978,
+         lng: -99.1269
+     },
+     zoom:15
+ });
 
   var marker = new google.maps.Marker({
-   map:map,
-   draggable: false
-});
+     map:map,
+     draggable: false
+ });
 
 //ese codigo se ejecuta para conseguir la ubicacion del usuario
 if (navigator.geolocation) {
- navigator.geolocation.getCurrentPosition(function (position) {
-     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-     map.setCenter(initialLocation);
-     marker.setPosition(initialLocation);         
- });
+   navigator.geolocation.getCurrentPosition(function (position) {
+       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+       map.setCenter(initialLocation);
+       marker.setPosition(initialLocation);         
+   });
 }
 
 //aqui se crea un searchbox para busqueda de autocompletado
@@ -579,85 +548,23 @@ var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsea
 
 google.maps.event.addListener(searchBox, 'places_changed',function(){
 
- var places = searchBox.getPlaces();
+   var places = searchBox.getPlaces();
 
- var bounds = new google.maps.LatLngBounds();
- var i, place;
+   var bounds = new google.maps.LatLngBounds();
+   var i, place;
 
- for(i=0; place=places[i];i++){
-  bounds.extend(place.geometry.location);
-  marker.setPosition(place.geometry.location);
-}
-map.fitBounds(bounds);
-map.setZoom(15);
+   for(i=0; place=places[i];i++){
+      bounds.extend(place.geometry.location);
+      marker.setPosition(place.geometry.location);
+  }
+  map.fitBounds(bounds);
+  map.setZoom(15);
 })
 
 </script>
 </div>
 </div>
 
-<!-- Modal footer -->
-<div class="modal-footer">
-  <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><!--/.input-->
-</div><!--/.col-md-4-->
-
-<div class="col-md-4">
-  <label style="color: black">Destino</label>
-  <div class="input">
-      <div class="text-center">
-          <button type="submit" class="button" data-toggle="modal" data-target="#seleccionarOrigen" style="background-color: #59B8CE; color: black">Seleccionar Destino</button>
-          <div class="modal fade" id="seleccionarOrigen">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                          <h4 class="modal-title">Selecciona el destino </h4>
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-
-                      <!-- Modal body -->
-                      <div class="modal-body">
-
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Listo</button>
-                  </div>
-
-              </div>
-          </div>
-      </div>
-  </div>
-</div><!--/.input-->
-</div><!--/.col-md-4-->
-
-<div class="col-md-4">
-  <label style="color: black">Fecha</label>
-  <div class="input">
-      <i class="fa fa-calendar"></i>
-      <input type="text" class="date-start date-selector form-controller" placeholder="dd/mm/aa">
-  </div><!--/.input-->
-</div><!--/.col-md-4-->
-</div>
-</div>
-<div class="check-vehicle-footer">
-  <div class="col text-center">                            
-      <button type="submit" class="button" style="background-color: #59B8CE">Programar</button>
-  </div><!-- /.row -->
-</div><!-- /.check-vehicle-footer -->
-</form><!-- /.advance_search_query -->
-</div><!-- /.col-md-8 -->
-</div><!-- /.row -->
-</div><!--/.container -->
-</div><!-- /.check-vehicle-block-->
 
 <!-- ======footer area======= -->
 <div class="container footer-top-border">

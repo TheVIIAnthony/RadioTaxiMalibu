@@ -518,15 +518,21 @@ data-height="none" data-no-retina>
     <input type="text" id="origen" placeholder="Ingresa el origen">
     <input type="text" id="destino" placeholder="Ingresa el destino">
     <br>
-    <button id="ruta" style="color: black">Obtener ruta</button>
+    <button style="color: black" id="get">Obtener ruta</button>
     <label>La distancia es de:</label>
     <div id="map-canvas">
+        <div id="output" class="result-table"></div>
+        
         <script>
-var map = new google.maps.Map(document.getElementById('map-canvas'), {
-              zoom: 15,
-              center: {lat: 19.4978, lng: -99.1269}
-          });
-  //se crea un mapa
+            var myLatLng = { lat: 19.4978, lng: -99.1269 };
+            var mapOptions = {
+                center: myLatLng,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+    //se crea un mapa
+    var map =  new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
+
     //se crean los marcadores que se van a ocupar, 1 para cada input  
     var marker = new google.maps.Marker({
        map:map,
@@ -538,19 +544,14 @@ var map = new google.maps.Map(document.getElementById('map-canvas'), {
        draggable: false
    });
 
-//este codigo se ejecuta para conseguir la ubicacion del usuario
-if (navigator.geolocation) {
- navigator.geolocation.getCurrentPosition(function (position) {
-     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-     map.setCenter(initialLocation);
-     /*marker.setPosition(initialLocation); */
- });
-}
 
 //aqui se crea un searchbox para busqueda de autocompletado del origen y destino
 var searchBox = new google.maps.places.SearchBox(document.getElementById('origen'));
 var searchBox2 = new google.maps.places.SearchBox(document.getElementById('destino'));
 
+
+
+//funcion de busqueda del searchbox
 google.maps.event.addListener(searchBox, 'places_changed',function(){
 
  var places = searchBox.getPlaces();
@@ -566,6 +567,7 @@ map.fitBounds(bounds);
 map.setZoom(15);
 })
 
+//funcion de busqueda del searchbox2
 google.maps.event.addListener(searchBox2, 'places_changed',function(){
 
  var places = searchBox2.getPlaces();
@@ -581,8 +583,35 @@ map.fitBounds(bounds);
 map.setZoom(15);
 })
 
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();
 
+//funcion del calculo de ruta
+function calcularRuta(){
+    var request = {
+        origin: document.getElementById('origen').value,
+        destination: document.getElementById('destino').value,
+        travelMode: 'DRIVING'
+    };
+    directionsService.route(request, function(result, Status){
+        if (Status == "OK") {
+            directionsDisplay.setDirections(result);
+            directionsDisplay.setMap(map);
+        }
+    });
+}
 
+document.getElementById('get').onclick= function(){
+    calcularRuta();
+};
+
+if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(function (position) {
+     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     map.setCenter(initialLocation);
+     marker.setPosition(initialLocation); 
+ });
+}
 </script>
 </div>
 </div>

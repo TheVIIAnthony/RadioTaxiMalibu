@@ -515,51 +515,73 @@ data-height="none" data-no-retina>
 
 <!-- ====== Check Vehicle Area ====== --> 
 <div style="background-color: #FFC012">
-    <input type="text" id="mapsearch">
+    <input type="text" id="origen" placeholder="Ingresa el origen">
+    <input type="text" id="destino" placeholder="Ingresa el destino">
     <br>
+    <button id="ruta" style="color: black">Obtener ruta</button>
+    <label>La distancia es de:</label>
     <div id="map-canvas">
         <script>
-  //se crea un mapa y un marcador
-
-  var map = new google.maps.Map(document.getElementById('map-canvas'),{
-      center:{
-         lat: 19.4978,
-         lng: -99.1269
-     },
-     zoom:15
- });
-
-  var marker = new google.maps.Marker({
-     map:map,
-     draggable: false
- });
-
-//ese codigo se ejecuta para conseguir la ubicacion del usuario
-if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(function (position) {
-       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-       map.setCenter(initialLocation);
-       marker.setPosition(initialLocation);         
+var map = new google.maps.Map(document.getElementById('map-canvas'), {
+              zoom: 15,
+              center: {lat: 19.4978, lng: -99.1269}
+          });
+  //se crea un mapa
+    //se crean los marcadores que se van a ocupar, 1 para cada input  
+    var marker = new google.maps.Marker({
+       map:map,
+       draggable: false
    });
+
+    var marker2 = new google.maps.Marker({
+       map:map,
+       draggable: false
+   });
+
+//este codigo se ejecuta para conseguir la ubicacion del usuario
+if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(function (position) {
+     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     map.setCenter(initialLocation);
+     /*marker.setPosition(initialLocation); */
+ });
 }
 
-//aqui se crea un searchbox para busqueda de autocompletado
-var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+//aqui se crea un searchbox para busqueda de autocompletado del origen y destino
+var searchBox = new google.maps.places.SearchBox(document.getElementById('origen'));
+var searchBox2 = new google.maps.places.SearchBox(document.getElementById('destino'));
 
 google.maps.event.addListener(searchBox, 'places_changed',function(){
 
-   var places = searchBox.getPlaces();
+ var places = searchBox.getPlaces();
 
-   var bounds = new google.maps.LatLngBounds();
-   var i, place;
+ var bounds = new google.maps.LatLngBounds();
+ var i, place;
 
-   for(i=0; place=places[i];i++){
-      bounds.extend(place.geometry.location);
-      marker.setPosition(place.geometry.location);
-  }
-  map.fitBounds(bounds);
-  map.setZoom(15);
+ for(i=0; place=places[i];i++){
+  bounds.extend(place.geometry.location);
+  marker.setPosition(place.geometry.location);
+}
+map.fitBounds(bounds);
+map.setZoom(15);
 })
+
+google.maps.event.addListener(searchBox2, 'places_changed',function(){
+
+ var places = searchBox2.getPlaces();
+
+ var bounds = new google.maps.LatLngBounds();
+ var i, place;
+
+ for(i=0; place=places[i];i++){
+  bounds.extend(place.geometry.location);
+  marker2.setPosition(place.geometry.location);
+}
+map.fitBounds(bounds);
+map.setZoom(15);
+})
+
+
 
 </script>
 </div>

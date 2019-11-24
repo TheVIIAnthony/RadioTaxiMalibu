@@ -520,7 +520,13 @@ data-height="none" data-no-retina>
     <br>
     <button style="color: black" id="get">Obtener ruta</button>
     <br>
-    <div id="output"></div>
+    <div id="output">
+        <div id="resultado"> 
+            Distancia:
+            <br>
+            Costo:
+        </div>
+    </div>
     <div id="map-canvas">
         <script>
             var myLatLng = { lat: 19.4978, lng: -99.1269 };
@@ -595,8 +601,13 @@ function calcularRuta(){
     directionsService.route(request, function(result, Status){
         var TotalDistancia = result.routes[0].legs[0].distance.text;
         var DistanciaNum = parseFloat(TotalDistancia);
-        
-        $("#output").html("<div id='resultado'> Distancia: " + result.routes[0].legs[0].distance.text + " <br/> Costo: " +"</div>");
+        // 1.5 
+        // ckm = km - 1.5
+        // costo = ckm * 10 + 40
+        var ckm = DistanciaNum - 1.5;
+        var costo = ckm * 10 + 40;
+
+        $("#output").html("<div id='resultado'> Distancia: " + TotalDistancia + " <br/> Costo: "+ costo +"</div>");
         document.getElementById("output").style.display = "block";
         if (Status == "OK") {
             directionsDisplay.setDirections(result);

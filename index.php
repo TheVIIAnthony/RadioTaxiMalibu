@@ -610,13 +610,18 @@ function calcularRuta(){
         var DistanciaNum = parseFloat(TotalDistancia);
         if (DistanciaNum <= 3.5) {
             costo = 40;
+        }else if(DistanciaNum >=6 && DistanciaNum <= 8 ) {
+            var costo = DistanciaNum * 9;
+        }else if (DistanciaNum >=9 && DistanciaNum <= 10){
+            var costo = DistanciaNum * 8;
+        }else if(DistanciaNum >= 10){
+            var costo = DistanciaNum * 8;
         }else{
             var costo =  DistanciaNum * 10;
         }
         var fecha = document.getElementById('campoFecha').value;
         var horaS = document.getElementById('horaSolicitud').value;
         var horaL = document.getElementById('horaLlegada').value;
-        alert(fecha + horaS + horaL);
         $("#output").html("<div id='resultado'> Distancia: " + TotalDistancia + " <br/> Costo: "+ costo +"</div>");
         document.getElementById("output").style.display = "block";
         if (Status == "OK") {

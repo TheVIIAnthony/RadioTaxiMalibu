@@ -497,7 +497,6 @@ data-height="none" data-no-retina>
 </div><!-- /.revolution slider -->
 </div><!-- /.slider wrapper -->
 </div><!-- /.slider-block -->
-
 <!-- ====== Section divider ====== --> 
 <div class="vehicle-section-divider night-rider">
     <div class="contoiner-fluid">
@@ -513,11 +512,19 @@ data-height="none" data-no-retina>
     </div><!-- /.container-fluid -->
 </div><!-- /.section-divider -->
 
-<!-- ====== Check Vehicle Area ====== --> 
+<!-- ====== Check Vehicle Area ======  class="time-selector form-controller --> 
 <div style="background-color: #FFC012">
     <input type="text" id="origen" placeholder="Ingresa el origen">
     <input type="text" id="destino" placeholder="Ingresa el destino">
-    <br>
+    <div class="input" style=" width: 200px" id="campoFecha">
+        <input type="text" class="date-start date-selector form-controller">
+    </div>
+    <div class="input" style=" width: 200px" id="horaSolicitud">
+        <input type="text" class="time-selector form-controller">
+    </div>
+    <div class="input" style=" width: 200px" id="horaLlegada">
+        <input type="text" class="time-selector form-controller">
+    </div>
     <button style="color: black" id="get">Obtener ruta</button>
     <br>
     <div id="output">
@@ -601,12 +608,15 @@ function calcularRuta(){
     directionsService.route(request, function(result, Status){
         var TotalDistancia = result.routes[0].legs[0].distance.text;
         var DistanciaNum = parseFloat(TotalDistancia);
-        // 1.5 
-        // ckm = km - 1.5
-        // costo = ckm * 10 + 40
-        var ckm = DistanciaNum - 1.5;
-        var costo = ckm * 10 + 40;
-
+        if (DistanciaNum <= 3.5) {
+            costo = 40;
+        }else{
+            var costo =  DistanciaNum * 10;
+        }
+        var fecha = document.getElementById('campoFecha').value;
+        var horaS = document.getElementById('horaSolicitud').value;
+        var horaL = document.getElementById('horaLlegada').value;
+        alert(fecha + horaS + horaL);
         $("#output").html("<div id='resultado'> Distancia: " + TotalDistancia + " <br/> Costo: "+ costo +"</div>");
         document.getElementById("output").style.display = "block";
         if (Status == "OK") {
@@ -621,6 +631,8 @@ document.getElementById('get').onclick= function(){
     calcularRuta();
 };
 
+
+//geolocalizacion
 if (navigator.geolocation) {
    navigator.geolocation.getCurrentPosition(function (position) {
        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);

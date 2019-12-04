@@ -642,6 +642,26 @@ function calcularRuta(){
         calcularRuta();
     };
 
+    function ajax_post(){
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        var a = document.getElementById('origen').value;
+        var b = document.getElementById('destino').value;
+        var informacion = "origen=" + a + "&destino=" + b;
+        xmlhttp.onreadystatechange = function(){
+            if(xmlhttp.readyState === 4 && xmlhttp.status ===200){
+                var mensaje = xmlhttp.response.Text;
+                console.log(mensaje);
+            }
+        } 
+        xmlhttp.open("POST", "dataUpload.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-wwww-form-urlencoded");
+        xmlhttp.send(informacion);
+    }
 
 //geolocalizacion
 if (navigator.geolocation) {

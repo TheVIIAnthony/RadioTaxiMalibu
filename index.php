@@ -525,7 +525,8 @@ data-height="none" data-no-retina>
     <div class="input" style=" width: 200px" id="horaLlegada">
         <input type="text" class="time-selector form-controller">
     </div>
-    <button style="color: black" id="get">Obtener ruta</button>
+    <button style="color: black" id="calc">Obtener ruta</button>
+    <button style="color: black" id="programar">Programar</button>
     <br>
     <div id="output">
         <div id="resultado"> 
@@ -543,18 +544,21 @@ data-height="none" data-no-retina>
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
     //se crea un mapa
-    var map =  new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
+    var map =  new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     //se crean los marcadores que se van a ocupar, 1 para cada input  
+
     var marker = new google.maps.Marker({
-     map:map,
-     draggable: false
- });
+       map:map,
+       draggable: true
+   });
 
     var marker2 = new google.maps.Marker({
-     map:map,
-     draggable: false
- });
+       map:map,
+       draggable: true
+   });
+
+
 
 
 //aqui se crea un searchbox para busqueda de autocompletado del origen y destino
@@ -566,33 +570,33 @@ var searchBox2 = new google.maps.places.SearchBox(document.getElementById('desti
 //funcion de busqueda del searchbox
 google.maps.event.addListener(searchBox, 'places_changed',function(){
 
-   var places = searchBox.getPlaces();
+ var places = searchBox.getPlaces();
 
-   var bounds = new google.maps.LatLngBounds();
-   var i, place;
+ var bounds = new google.maps.LatLngBounds();
+ var i, place;
 
-   for(i=0; place=places[i];i++){
-      bounds.extend(place.geometry.location);
-      marker.setPosition(place.geometry.location);
-  }
-  map.fitBounds(bounds);
-  map.setZoom(15);
+ for(i=0; place=places[i];i++){
+  bounds.extend(place.geometry.location);
+  marker.setPosition(place.geometry.location);
+}
+map.fitBounds(bounds);
+map.setZoom(15);
 })
 
 //funcion de busqueda del searchbox2
 google.maps.event.addListener(searchBox2, 'places_changed',function(){
 
-   var places = searchBox2.getPlaces();
+ var places = searchBox2.getPlaces();
 
-   var bounds = new google.maps.LatLngBounds();
-   var i, place;
+ var bounds = new google.maps.LatLngBounds();
+ var i, place;
 
-   for(i=0; place=places[i];i++){
-      bounds.extend(place.geometry.location);
-      marker2.setPosition(place.geometry.location);
-  }
-  map.fitBounds(bounds);
-  map.setZoom(15);
+ for(i=0; place=places[i];i++){
+  bounds.extend(place.geometry.location);
+  marker2.setPosition(place.geometry.location);
+}
+map.fitBounds(bounds);
+map.setZoom(15);
 })
 
 var directionsService = new google.maps.DirectionsService();
@@ -600,51 +604,54 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 
 //funcion del calculo de ruta
 function calcularRuta(){
-    var request = {
-        origin: document.getElementById('origen').value,
-        destination: document.getElementById('destino').value,
-        travelMode: 'DRIVING'
+    //aqui debera recibir los valores de los marcadores y no de los campos te busqueda
+    //los campos de busqueda cambiaran dinamicamente con el valor de los marcadores
+        var request = {
+            origin: document.getElementById('origen').value,
+            destination: document.getElementById('destino').value,
+            travelMode: 'DRIVING'
+        };
+        directionsService.route(request, function(result, Status){
+            var TotalDistancia = result.routes[0].legs[0].distance.text;
+            var DistanciaNum = parseFloat(TotalDistancia);
+            if (DistanciaNum <= 3.5) {
+                costo = 40;
+            }else if(DistanciaNum >=6 && DistanciaNum <= 8 ) {
+                var costo = DistanciaNum * 9;
+            }else if (DistanciaNum >=9 && DistanciaNum <= 10){
+                var costo = DistanciaNum * 8;
+            }else if(DistanciaNum >= 10){
+                var costo = DistanciaNum * 8;
+            }else{
+                var costo =  DistanciaNum * 10;
+            }
+            var fecha = document.getElementById('campoFecha').value;
+            var horaS = document.getElementById('horaSolicitud').value;
+            var horaL = document.getElementById('horaLlegada').value;
+            $("#output").html("<div id='resultado'> Distancia: " + TotalDistancia + " <br/> Costo: "+ costo +"</div>");
+            document.getElementById("output").style.display = "block";
+            if (Status == "OK") {
+                directionsDisplay.setDirections(result);
+                directionsDisplay.setMap(map);
+            }
+        });
+    }
+
+
+    document.getElementById('calc').onclick= function(){
+        calcularRuta();
     };
-    directionsService.route(request, function(result, Status){
-        var TotalDistancia = result.routes[0].legs[0].distance.text;
-        var DistanciaNum = parseFloat(TotalDistancia);
-        if (DistanciaNum <= 3.5) {
-            costo = 40;
-        }else if(DistanciaNum >=6 && DistanciaNum <= 8 ) {
-            var costo = DistanciaNum * 9;
-        }else if (DistanciaNum >=9 && DistanciaNum <= 10){
-            var costo = DistanciaNum * 8;
-        }else if(DistanciaNum >= 10){
-            var costo = DistanciaNum * 8;
-        }else{
-            var costo =  DistanciaNum * 10;
-        }
-        var fecha = document.getElementById('campoFecha').value;
-        var horaS = document.getElementById('horaSolicitud').value;
-        var horaL = document.getElementById('horaLlegada').value;
-        $("#output").html("<div id='resultado'> Distancia: " + TotalDistancia + " <br/> Costo: "+ costo +"</div>");
-        document.getElementById("output").style.display = "block";
-        if (Status == "OK") {
-            directionsDisplay.setDirections(result);
-            directionsDisplay.setMap(map);
-        }
-    });
-}
-
-
-document.getElementById('get').onclick= function(){
-    calcularRuta();
-};
 
 
 //geolocalizacion
 if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(function (position) {
-       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-       map.setCenter(initialLocation);
-       marker.setPosition(initialLocation); 
-   });
+ navigator.geolocation.getCurrentPosition(function (position) {
+     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+     map.setCenter(initialLocation);
+     marker.setPosition(initialLocation); 
+ });
 }
+
 </script>
 </div>
 </div>

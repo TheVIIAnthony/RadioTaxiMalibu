@@ -516,23 +516,25 @@ data-height="none" data-no-retina>
 <div style="background-color: #FFC012">
     <input type="text" id="origen" placeholder="Ingresa el origen">
     <input type="text" id="destino" placeholder="Ingresa el destino">
-    <div class="input" style=" width: 200px" id="campoFecha">
-        <input type="text" class="date-start date-selector form-controller">
+    <div class="input" style=" width: 200px">
+        <input type="text" class="date-start date-selector form-controller" id="Fecha">
     </div>
-    <div class="input" style=" width: 200px" id="horaSolicitud">
-        <input type="text" class="time-selector form-controller">
+    <div class="input" style=" width: 200px" >
+        <input type="text" class="time-selector form-controller" id="horaSolicitud">
     </div>
-    <div class="input" style=" width: 200px" id="horaLlegada">
-        <input type="text" class="time-selector form-controller">
+    <div class="input" style=" width: 200px" >
+        <input type="text" class="time-selector form-controller" id="horaLlegada">
+        <input type="text" placeholder="Ingresa tu nombre" id="nombre">
+        <input type="text" placeholder="Ingresa tu numero de telefono" id="telefono">
     </div>
     <button style="color: black" id="calc">Obtener ruta</button>
     <button style="color: black" id="programar">Programar</button>
     <br>
     <div id="output">
         <div id="resultado"> 
-            Distancia:
+            Distancia: <label id="dstnc"></label>
             <br>
-            Costo:
+            Costo: <label id="cst"></label>
         </div>
     </div>
     <div id="map-canvas">
@@ -606,62 +608,70 @@ var directionsDisplay = new google.maps.DirectionsRenderer();
 function calcularRuta(){
     //aqui debera recibir los valores de los marcadores y no de los campos te busqueda
     //los campos de busqueda cambiaran dinamicamente con el valor de los marcadores
-        var request = {
-            origin: document.getElementById('origen').value,
-            destination: document.getElementById('destino').value,
-            travelMode: 'DRIVING'
-        };
-        directionsService.route(request, function(result, Status){
-            var TotalDistancia = result.routes[0].legs[0].distance.text;
-            var DistanciaNum = parseFloat(TotalDistancia);
-            if (DistanciaNum <= 3.5) {
-                costo = 40;
-            }else if(DistanciaNum >=6 && DistanciaNum <= 8 ) {
-                var costo = DistanciaNum * 9;
-            }else if (DistanciaNum >=9 && DistanciaNum <= 10){
-                var costo = DistanciaNum * 8;
-            }else if(DistanciaNum >= 10){
-                var costo = DistanciaNum * 8;
-            }else{
-                var costo =  DistanciaNum * 10;
-            }
-            var fecha = document.getElementById('campoFecha').value;
-            var horaS = document.getElementById('horaSolicitud').value;
-            var horaL = document.getElementById('horaLlegada').value;
-            $("#output").html("<div id='resultado'> Distancia: " + TotalDistancia + " <br/> Costo: "+ costo +"</div>");
-            document.getElementById("output").style.display = "block";
-            if (Status == "OK") {
-                directionsDisplay.setDirections(result);
-                directionsDisplay.setMap(map);
-            }
-        });
-    }
-
-
-    document.getElementById('calc').onclick= function(){
-        calcularRuta();
+    var request = {
+        origin: document.getElementById('origen').value,
+        destination: document.getElementById('destino').value,
+        travelMode: 'DRIVING'
     };
-
-    function ajax_post(){
-        var xmlhttp;
-        if(window.XMLHttpRequest){
-            xmlhttp = new XMLHttpRequest();
+    directionsService.route(request, function(result, Status){
+        var TotalDistancia = result.routes[0].legs[0].distance.text;
+        var DistanciaNum = parseFloat(TotalDistancia);
+        if (DistanciaNum <= 3.5) {
+            costo = 40;
+        }else if(DistanciaNum >=6 && DistanciaNum <= 8 ) {
+            var costo = DistanciaNum * 9;
+        }else if (DistanciaNum >=9 && DistanciaNum <= 10){
+            var costo = DistanciaNum * 8;
+        }else if(DistanciaNum >= 10){
+            var costo = DistanciaNum * 8;
         }else{
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            var costo =  DistanciaNum * 10;
         }
-        var a = document.getElementById('origen').value;
-        var b = document.getElementById('destino').value;
-        var informacion = "origen=" + a + "&destino=" + b;
-        xmlhttp.onreadystatechange = function(){
-            if(xmlhttp.readyState === 4 && xmlhttp.status ===200){
-                var mensaje = xmlhttp.response.Text;
-                console.log(mensaje);
-            }
-        } 
-        xmlhttp.open("POST", "dataUpload.php", true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-wwww-form-urlencoded");
-        xmlhttp.send(informacion);
+        document.getElementById('cst').innerHTML = costo;
+        document.getElementById('dstnc').innerHTML = DistanciaNum;
+        if (Status == "OK") {
+            directionsDisplay.setDirections(result);
+            directionsDisplay.setMap(map);
+        }
+    });
+}
+
+
+document.getElementById('calc').onclick= function(){
+    calcularRuta();
+};
+
+
+
+function agendarViaje(){
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }else{
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
+    var orgn = document.getElementById('origen').value;
+    var dstn = document.getElementById('destino').value;
+    var fch = document.getElementById('Fecha').value;
+    var hrS= document.getElementById('horaSolicitud').value;
+    var hrL= document.getElementById('horaLlegada').value;
+    var nmbr= document.getElementById('nombre').value;
+    var tlfn= document.getElementById('telefono').value;
+    var costo = document.getElementById('cst').value;
+    xmlhttp.onreadystatechange = function(){
+        if(xmlhttp.readyState === 4 && xmlhttp.status ===200){
+            var mensaje = xmlhttp.response.Text;
+        }
+    } 
+    xmlhttp.open("GET", "dataUpload.php?origen" + orgn + "&destino=" + dstn + "&fecha="+ fch +"&horaSolicitud="+ hrS +"&horaLlegada="+ hrL +"&nombre="+ nmbr + "&telefono=" + tlfn + "&costo=" + costo, true);
+    xmlhttp.send();
+}
+
+
+
+document.getElementById('programar').onclick= function(){
+    agendarViaje();
+};
 
 //geolocalizacion
 if (navigator.geolocation) {

@@ -1,7 +1,11 @@
 <?php 
-$mysqli = new mysqli('localhost','antonio','123!"#qwe');
-if($mysqli-> connect_error){
-die('error de conexion' . $mysqli-> connect_error);
+$host ='localhost';
+$usuario='root';
+$clave='';
+$bd='rtm';
+$con = mysqli_connect($host,$usuario,$clave,$bd);
+if(mysqli_connect_errno()){
+	echo 'error de conexion' . mysql_connect_error();
 }
 echo "conexion exitosa";
 ?>

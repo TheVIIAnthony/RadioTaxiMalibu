@@ -514,14 +514,14 @@ data-height="none" data-no-retina>
 
 <!-- ====== Check Vehicle Area ======  class="time-selector form-controller --> 
 <div style="background-color: #FFC012">
+    <section id="hora">
+    </section>
     <input type="text" id="origen" placeholder="Ingresa el origen">
     <input type="text" id="destino" placeholder="Ingresa el destino">
-    <div class="input" style=" width: 200px">
-        <input type="text" class="date-start date-selector form-controller" id="Fecha">
+    <br>
+    <div id="imprimirHora" style="color: black">
     </div>
-    <div class="input" style=" width: 200px" >
-        <input type="text" class="time-selector form-controller" id="horaSolicitud">
-    </div>
+    <br>
     <div class="input" style=" width: 200px" >
         <input type="text" class="time-selector form-controller" id="horaLlegada">
         <input type="text" placeholder="Ingresa tu nombre" id="nombre">
@@ -644,27 +644,55 @@ document.getElementById('calc').onclick= function(){
 
 
 function agendarViaje(){
-    var xmlhttp;
-    if(window.XMLHttpRequest){
-        xmlhttp = new XMLHttpRequest();
-    }else{
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    var orgn = document.getElementById('origen').value;
-    var dstn = document.getElementById('destino').value;
-    var fch = document.getElementById('Fecha').value;
-    var hrS= document.getElementById('horaSolicitud').value;
-    var hrL= document.getElementById('horaLlegada').value;
-    var nmbr= document.getElementById('nombre').value;
-    var tlfn= document.getElementById('telefono').value;
-    var costo = document.getElementById('cst').value;
-    xmlhttp.onreadystatechange = function(){
-        if(xmlhttp.readyState === 4 && xmlhttp.status ===200){
-            var mensaje = xmlhttp.response.Text;
+    var costo;
+    var request = {
+        origin: document.getElementById('origen').value,
+        destination: document.getElementById('destino').value,
+        travelMode: 'DRIVING'
+    };
+    directionsService.route(request, function(result, Status){
+        var TotalDistancia = result.routes[0].legs[0].distance.text;
+        var DistanciaNum = parseFloat(TotalDistancia);
+        if (DistanciaNum <= 3.5) {
+            costo = 40;
+        }else if(DistanciaNum >=6 && DistanciaNum <= 8 ) {
+            costo = DistanciaNum * 9;
+        }else if (DistanciaNum >=9 && DistanciaNum <= 10){
+            costo = DistanciaNum * 8;
+        }else if(DistanciaNum >= 10){
+            costo = DistanciaNum * 8;
+        }else{
+            costo =  DistanciaNum * 10;
         }
-    } 
-    xmlhttp.open("GET", "dataUpload.php?origen" + orgn + "&destino=" + dstn + "&fecha="+ fch +"&horaSolicitud="+ hrS +"&horaLlegada="+ hrL +"&nombre="+ nmbr + "&telefono=" + tlfn + "&costo=" + costo, true);
-    xmlhttp.send();
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        var d = new Date();
+        var año = d.getFullYear();
+        var mes = d.getMonth();
+        var dia = d.getDate();
+        var fch = año + "/" + mes + "/" + dia;
+        console.log(fch);
+        var orgn = document.getElementById('origen').value;
+        var dstn = document.getElementById('destino').value;
+        var hora = d.getHours();
+        var min = d.getMinutes();
+        var hrS= hora + ":" +  min;
+        var hrL= document.getElementById('horaLlegada').value;
+        var nmbr= document.getElementById('nombre').value;
+        var tlfn= document.getElementById('telefono').value;
+        xmlhttp.onreadystatechange = function(){
+            if(xmlhttp.readyState === 4 && xmlhttp.status ===200){
+                var mensaje = xmlhttp.response.Text;
+            }
+        } 
+        xmlhttp.open("GET", "dataUpload.php?origen=" + orgn + "&destino=" + dstn + "&fecha="+ fch +"&horaSolicitud="+ hrS +"&horaLlegada="+ hrL +"&nombre="+ nmbr + "&telefono=" + tlfn + "&costo=" + costo, true);
+        xmlhttp.send();
+        alert("Viaje programado exitosamente");
+    });
 }
 
 
@@ -680,6 +708,14 @@ if (navigator.geolocation) {
      map.setCenter(initialLocation);
      marker.setPosition(initialLocation); 
  });
+}
+
+function reloj(){
+    var tiempo = new Date();
+    var hora = tiempo.getHours();
+    var min = tiempo.getMinutes();
+    var recarga = setTimeOut("reloj()", 500);
+    document.getElementById('imprimirHora').innerHTML = hora + ":" + min;
 }
 
 </script>

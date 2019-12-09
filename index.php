@@ -514,13 +514,13 @@ data-height="none" data-no-retina>
 
 <!-- ====== Check Vehicle Area ======  class="time-selector form-controller --> 
 <div style="background-color: #FFC012">
-    <section id="hora">
-    </section>
     <input type="text" id="origen" placeholder="Ingresa el origen">
     <input type="text" id="destino" placeholder="Ingresa el destino">
     <br>
-    <div id="imprimirHora" style="color: black">
+    <div class="col-md-4">
+        <input class="date-start date-selector form-controller">
     </div>
+
     <br>
     <div class="input" style=" width: 200px" >
         <input type="text" class="time-selector form-controller" id="horaLlegada">
@@ -528,37 +528,61 @@ data-height="none" data-no-retina>
         <input type="text" placeholder="Ingresa tu numero de telefono" id="telefono">
     </div>
     <button style="color: black" id="calc">Obtener ruta</button>
-    <button style="color: black" id="programar">Programar</button>
-    <br>
-    <div id="output">
-        <div id="resultado"> 
-            Distancia: <label id="dstnc"></label>
-            <br>
-            Costo: <label id="cst"></label>
+    <button style="color: black" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="reservar">Reservar</button>
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Confirmar reserva</h4>
+        </div>
+        <div class="modal-body">
+            <div id="write">
+                <p>The serial number is: </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
-    <div id="map-canvas">
-        <script>
-            var myLatLng = { lat: 19.4978, lng: -99.1269 };
-            var mapOptions = {
-                center: myLatLng,
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+
+</div>
+</div>
+<br>
+<div id="output">
+    <div id="resultado"> 
+        Distancia: <label id="dstnc"></label>
+        <br>
+        Costo: <label id="cst"></label>
+    </div>
+</div>
+<div id="map-canvas">
+    <script>
+        function show() {
+            document.getElementById("write").innerHTML = costo;
+        }
+        var myLatLng = { lat: 19.4978, lng: -99.1269 };
+        var mapOptions = {
+            center: myLatLng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
     //se crea un mapa
     var map =  new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     //se crean los marcadores que se van a ocupar, 1 para cada input  
 
     var marker = new google.maps.Marker({
-       map:map,
-       draggable: true
-   });
+     map:map,
+     draggable: true
+ });
 
     var marker2 = new google.maps.Marker({
-       map:map,
-       draggable: true
-   });
+     map:map,
+     draggable: true
+ });
 
 
 
@@ -572,33 +596,33 @@ var searchBox2 = new google.maps.places.SearchBox(document.getElementById('desti
 //funcion de busqueda del searchbox
 google.maps.event.addListener(searchBox, 'places_changed',function(){
 
- var places = searchBox.getPlaces();
+   var places = searchBox.getPlaces();
 
- var bounds = new google.maps.LatLngBounds();
- var i, place;
+   var bounds = new google.maps.LatLngBounds();
+   var i, place;
 
- for(i=0; place=places[i];i++){
-  bounds.extend(place.geometry.location);
-  marker.setPosition(place.geometry.location);
-}
-map.fitBounds(bounds);
-map.setZoom(15);
+   for(i=0; place=places[i];i++){
+      bounds.extend(place.geometry.location);
+      marker.setPosition(place.geometry.location);
+  }
+  map.fitBounds(bounds);
+  map.setZoom(15);
 })
 
 //funcion de busqueda del searchbox2
 google.maps.event.addListener(searchBox2, 'places_changed',function(){
 
- var places = searchBox2.getPlaces();
+   var places = searchBox2.getPlaces();
 
- var bounds = new google.maps.LatLngBounds();
- var i, place;
+   var bounds = new google.maps.LatLngBounds();
+   var i, place;
 
- for(i=0; place=places[i];i++){
-  bounds.extend(place.geometry.location);
-  marker2.setPosition(place.geometry.location);
-}
-map.fitBounds(bounds);
-map.setZoom(15);
+   for(i=0; place=places[i];i++){
+      bounds.extend(place.geometry.location);
+      marker2.setPosition(place.geometry.location);
+  }
+  map.fitBounds(bounds);
+  map.setZoom(15);
 })
 
 var directionsService = new google.maps.DirectionsService();
@@ -642,6 +666,9 @@ document.getElementById('calc').onclick= function(){
 };
 
 
+document.getElementById('reservar').onclick=function(){
+    show();
+};
 
 function agendarViaje(){
     var costo;
@@ -675,7 +702,6 @@ function agendarViaje(){
         var mes = d.getMonth();
         var dia = d.getDate();
         var fch = año + "/" + mes + "/" + dia;
-        console.log(fch);
         var orgn = document.getElementById('origen').value;
         var dstn = document.getElementById('destino').value;
         var hora = d.getHours();
@@ -697,25 +723,13 @@ function agendarViaje(){
 
 
 
-document.getElementById('programar').onclick= function(){
-    agendarViaje();
-};
-
 //geolocalizacion
 if (navigator.geolocation) {
- navigator.geolocation.getCurrentPosition(function (position) {
-     initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-     map.setCenter(initialLocation);
-     marker.setPosition(initialLocation); 
- });
-}
-
-function reloj(){
-    var tiempo = new Date();
-    var hora = tiempo.getHours();
-    var min = tiempo.getMinutes();
-    var recarga = setTimeOut("reloj()", 500);
-    document.getElementById('imprimirHora').innerHTML = hora + ":" + min;
+   navigator.geolocation.getCurrentPosition(function (position) {
+       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+       map.setCenter(initialLocation);
+       marker.setPosition(initialLocation); 
+   });
 }
 
 </script>

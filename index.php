@@ -518,7 +518,7 @@ data-height="none" data-no-retina>
     <input type="text" id="destino" placeholder="Ingresa el destino">
     <br>
     <div class="col-md-4">
-        <input class="date-start date-selector form-controller">
+        <input class="date-start date-selector form-controller" id="fecha">
     </div>
 
     <br>
@@ -540,7 +540,15 @@ data-height="none" data-no-retina>
         </div>
         <div class="modal-body">
             <div id="write">
-                <p>The serial number is: </p>
+                <p>Origen: <span id='origenTexto'></span></p>
+                <p>Destino: <span id="destinoTexto"></span></p>
+                <p>Fecha: <span id="fechaTexto"></span></p>
+                <p>Hora de Solicitud: <span id="solicitudTexto"></span></p>
+                <p>Hora Aprox. de llegada: <span id="llegadaTexto"></span></p>
+                <p>Nombre: <span id="nombreTexto"></span></p>
+                <p>Telefono: <span id="telefonoTexto"></span></p>
+                <p>Costo: <span id="costoTexto"></span></p>
+                <button style="color: black">Pagar</button>
             </div>
         </div>
         <div class="modal-footer">
@@ -555,14 +563,11 @@ data-height="none" data-no-retina>
     <div id="resultado"> 
         Distancia: <label id="dstnc"></label>
         <br>
-        Costo: <label id="cst"></label>
+        Costo: <span id="cst"></span>
     </div>
 </div>
 <div id="map-canvas">
     <script>
-        function show() {
-            document.getElementById("write").innerHTML = costo;
-        }
         var myLatLng = { lat: 19.4978, lng: -99.1269 };
         var mapOptions = {
             center: myLatLng,
@@ -730,6 +735,19 @@ if (navigator.geolocation) {
        map.setCenter(initialLocation);
        marker.setPosition(initialLocation); 
    });
+}
+
+
+function show() {
+   document.getElementById('origenTexto').innerHTML = document.getElementById('origen').value;   
+   document.getElementById('destinoTexto').innerHTML = document.getElementById('destino').value;   
+   document.getElementById('fechaTexto').innerHTML = document.getElementById('fecha').value;
+   document.getElementById('llegadaTexto').innerHTML = document.getElementById('horaLlegada').value;
+   document.getElementById('nombreTexto').innerHTML = document.getElementById('nombre').value;
+   document.getElementById('telefonoTexto').innerHTML = document.getElementById('telefono').value;
+   document.getElementById('costoTexto').innerHTML = document.getElementById('cst').value;
+   
+   
 }
 
 </script>

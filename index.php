@@ -53,9 +53,11 @@
     width: 100%;
 }
 </style>
+<script src="https://www.paypal.com/sdk/js?client-id=Aee22bejhVUprfzFxpe97VXffnRnpR2qTzRt1-GovLZE3Kk5E9gv78wvupOlreNvmOOiVsNcg9nsN0wX&currency=MXN"></script>
 </head>
 
 <body>
+
     <!-- ====== Header Top Area ====== --> 
     <header class="header-top-area" style="background-color: #59B8CE">
         <div class="container">
@@ -548,7 +550,7 @@ data-height="none" data-no-retina>
                 <p>Nombre: <span id="nombreTexto"></span></p>
                 <p>Telefono: <span id="telefonoTexto"></span></p>
                 <p>Costo: <span id="costoTexto"></span></p>
-                <button style="color: black">Pagar</button>
+                <div id="paypal-button-container"></div>
             </div>
         </div>
         <div class="modal-footer">
@@ -746,9 +748,37 @@ function show() {
    document.getElementById('nombreTexto').innerHTML = document.getElementById('nombre').value;
    document.getElementById('telefonoTexto').innerHTML = document.getElementById('telefono').value;
    document.getElementById('costoTexto').innerHTML = document.getElementById('cst').value;
-   
-   
+
+
 }
+
+
+paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '0.01'
+        }
+    }]
+});
+  },
+  onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // Call your server to save the transaction
+        return fetch('/paypal-transaction-complete', {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            orderID: data.orderID
+        })
+    });
+    });
+  }
+}).render('#paypal-button-container');
 
 </script>
 </div>

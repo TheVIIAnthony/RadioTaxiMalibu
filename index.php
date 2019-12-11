@@ -566,10 +566,14 @@ data-height="none" data-no-retina>
         Distancia: <label id="dstnc"></label>
         <br>
         Costo: <span id="cst"></span>
+        <input type="hidden" name="amount" id="paypalPrice" value="">
     </div>
 </div>
 <div id="map-canvas">
     <script>
+        var paypalPriceElement;
+
+
         var myLatLng = { lat: 19.4978, lng: -99.1269 };
         var mapOptions = {
             center: myLatLng,
@@ -660,6 +664,8 @@ function calcularRuta(){
         }
         document.getElementById('cst').innerHTML = costo;
         document.getElementById('dstnc').innerHTML = DistanciaNum;
+        paypalPriceElement = document.getElementById('paypalPrice');
+        paypalPriceElement.value = costo;
         if (Status == "OK") {
             directionsDisplay.setDirections(result);
             directionsDisplay.setMap(map);
@@ -748,17 +754,20 @@ function show() {
    document.getElementById('nombreTexto').innerHTML = document.getElementById('nombre').value;
    document.getElementById('telefonoTexto').innerHTML = document.getElementById('telefono').value;
    document.getElementById('costoTexto').innerHTML = document.getElementById('cst').value;
-
+   document.getElementById('costoTexto').innerHTML = document.getElementById('paypalPrice').value;
 
 }
 
+
+var test = 334;
 
 paypal.Buttons({
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '0.01'
+            currency_code: 'MXN',
+            value: test
         }
     }]
 });

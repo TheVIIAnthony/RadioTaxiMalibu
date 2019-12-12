@@ -53,7 +53,7 @@
     width: 100%;
 }
 </style>
-<script src="https://www.paypal.com/sdk/js?client-id=Aee22bejhVUprfzFxpe97VXffnRnpR2qTzRt1-GovLZE3Kk5E9gv78wvupOlreNvmOOiVsNcg9nsN0wX&currency=MXN"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AQ7iD8xBJADvWSRJ3JE9yYM4UjJEgw-Yb7V5jCBKPD30kQBd57ZI44N3iPD5kLqof5VLRg-58jwvLRdA&currency=MXN"></script>
 </head>
 
 <body>
@@ -674,6 +674,7 @@ function calcularRuta(){
 }
 
 
+
 document.getElementById('calc').onclick= function(){
     calcularRuta();
 };
@@ -746,6 +747,13 @@ if (navigator.geolocation) {
 }
 
 
+
+function calcularCosto(){
+    var costo = document.getElementById('cst').innerHTML;
+    return costo;
+}
+
+var monto;
 function show() {
    document.getElementById('origenTexto').innerHTML = document.getElementById('origen').value;   
    document.getElementById('destinoTexto').innerHTML = document.getElementById('destino').value;   
@@ -755,11 +763,9 @@ function show() {
    document.getElementById('telefonoTexto').innerHTML = document.getElementById('telefono').value;
    document.getElementById('costoTexto').innerHTML = document.getElementById('cst').value;
    document.getElementById('costoTexto').innerHTML = document.getElementById('paypalPrice').value;
-
+   monto = calcularCosto();
+   console.log(monto);
 }
-
-
-var test = 334;
 
 paypal.Buttons({
     createOrder: function(data, actions) {
@@ -767,7 +773,7 @@ paypal.Buttons({
         purchase_units: [{
           amount: {
             currency_code: 'MXN',
-            value: test
+            value: monto
         }
     }]
 });

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="jquery.timepicker.min.css">
+	<script src="jquery.timepicker.min.js"></script>
+	<script>
+		var d = new Date();
+		var horas = d.getHours() + 1;
+		var minutos = d.getMinutes();
+		var t = horas + ":" + minutos;
+		var tiempo = t.toString();
+		$(document).ready(function(){
+			$('#time').timepicker({ 
+				timeFormat: 'h:mm:ss p',
+				startTime: tiempo
+			});
+		});
+	</script>
+</head>
+<body>
+	<input type="text" id="time"/>
+</body>
+</html>

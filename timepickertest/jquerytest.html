@@ -2,23 +2,115 @@
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="jquery-ui.min.css">
 	<link rel="stylesheet" href="jquery.timepicker.min.css">
 	<script src="jquery.timepicker.min.js"></script>
 	<script>
-		var d = new Date();
-		var horas = d.getHours() + 1;
-		var minutos = d.getMinutes();
-		var t = horas + ":" + minutos;
-		var tiempo = t.toString();
 		$(document).ready(function(){
-			$('#time').timepicker({ 
-				timeFormat: 'h:mm:ss p',
-				startTime: tiempo
-			});
+			$("#time").hide();
 		});
 	</script>
 </head>
 <body>
+	<input type="text" id="datepicker">
+	<button id="MostrarFecha">
+		Mostrar fecha
+	</button>
+	<script>
+		var d = new Date();
+		var anioActual = d.getFullYear().toString();
+		var mesActual = (d.getMonth() + 1).toString();
+		var diaActual = d.getDate().toString();
+		var fechaActual = anioActual + "/" + mesActual + "/" + diaActual;
+		$("#datepicker").datepicker();
+		document.getElementById("MostrarFecha").onclick=function(){
+			var currentDate = $( "#datepicker" ).datepicker( "getDate" ).toString();
+			var mes = currentDate.slice(4,7);
+			var dia = currentDate.slice(8,10);
+			var anio = currentDate.slice(11,15);
+			var numMes;
+			switch (mes){
+				case "Jan":
+				numMes = 1;
+				break;
+				case "Feb":
+				numMes = 2;
+				break;
+				case "Mar":
+				numMes = 3;
+				break;
+				case "Apr":
+				numMes = 4;
+				break;
+				case "May":
+				numMes = 5;
+				break;
+				case "Jun":
+				numMes = 6;
+				break;
+				case "Jul":
+				numMes = 7;
+				break;
+				case "Aug":
+				numMes = 8;
+				break;
+				case "Sep":
+				numMes = 9;
+				break;
+				case "Okt":
+				numMes = 10;
+				break;
+				case "Nov":
+				numMes = 11;
+				break;
+				case "Dec":
+				numMes = 12;
+				break;
+			}
+			console.log("El dia es:" + dia);
+			console.log("El mes es:" + numMes);
+			console.log("El año es:" + anio);
+			var fecha = anio + "/" + numMes + "/" + dia;
+			console.log("la fecha seleccionada es:" + fecha);
+			console.log("la fecha actual es:" + fechaActual);
+
+			var objetoFecha = new Date(fecha);
+			console.log(objetoFecha);
+			var objetoFechaActual = new Date(fechaActual);
+			console.log(objetoFechaActual);
+
+			
+			if (objetoFecha > objetoFechaActual) {
+				var horas = d.getHours();
+			}else if(objetoFecha < objetoFechaActual){
+
+			}else{
+				var horas = d.getHours() + 1;
+			}
+
+			var minutos = d.getMinutes();
+			var t = horas + ":" + minutos;
+			var tiempo = t.toString();
+			$(document).ready(function(){
+				$('#time').timepicker({ 
+					timeFormat: 'h:mm:ss p',
+					startTime: tiempo
+				});
+			});
+
+			if (objetoFecha > objetoFechaActual) {
+				console.log("selecciona la hora");
+				$("#time").show();
+			}else if (objetoFecha < objetoFechaActual) {
+				console.log("no es posible agendar en una fecha pasada");
+			}else{
+				console.log("ambas fechas son iguales");
+				console.log("ahora selecciona la hora");
+				$("#time").show();
+			}
+		};
+	</script>
 	<input type="text" id="time"/>
 </body>
 </html>

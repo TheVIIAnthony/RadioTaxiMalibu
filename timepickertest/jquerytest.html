@@ -13,7 +13,7 @@
 	</script>
 </head>
 <body>
-	<input type="text" id="datepicker">
+	<input onclick="resetear()" type="text" id="datepicker">
 	<button id="MostrarFecha">
 		Mostrar fecha
 	</button>
@@ -24,7 +24,19 @@
 		var diaActual = d.getDate().toString();
 		var fechaActual = anioActual + "/" + mesActual + "/" + diaActual;
 		$("#datepicker").datepicker();
-		document.getElementById("MostrarFecha").onclick=function(){
+
+		function resetear(){
+			var currentDate = $( "#datepicker" ).datepicker( "getDate" );
+			if (currentDate == null) {
+				console.log("selecciona una fecha");
+			}else{
+				$('#time').timepicker({ 
+					minTime: null,
+					maxTime: null 
+				});
+			}
+		}
+		function ejecutar(){
 			var currentDate = $( "#datepicker" ).datepicker( "getDate" ).toString();
 			var mes = currentDate.slice(4,7);
 			var dia = currentDate.slice(8,10);
@@ -79,7 +91,6 @@
 			console.log(objetoFecha);
 			var objetoFechaActual = new Date(fechaActual);
 			console.log(objetoFechaActual);
-
 			
 			if (objetoFecha > objetoFechaActual) {
 				var horas = d.getHours();
@@ -109,6 +120,10 @@
 				console.log("ahora selecciona la hora");
 				$("#time").show();
 			}
+		}
+
+		document.getElementById("MostrarFecha").onclick=function(){
+			ejecutar();
 		};
 	</script>
 	<input type="text" id="time"/>

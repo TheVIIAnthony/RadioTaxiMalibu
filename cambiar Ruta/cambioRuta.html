@@ -15,11 +15,14 @@
 	<label>Origen:</label>
 	<input id="origen" type="text">
 	<br>
+	<label >Latitud:</label><input type="text" id="OriginLatitude" placeholder="Latitude"/>
+	<label >Longitud:</label><input type="text" id="OriginLongitude" placeholder="Longitude"/>
+	<br>
 	<label>Destino:</label>
 	<input id="destino">
 	<br>
-	<label >Latitud:</label><input type="text" id="latitude" placeholder="Latitude"/>
-	<label >Longitud:</label><input type="text" id="longitude" placeholder="Longitude"/>
+	<label >Latitud:</label><input type="text" id="DestinationLatitude" placeholder="Latitude"/>
+	<label >Longitud:</label><input type="text" id="DestinationLongitude" placeholder="Longitude"/>
 	<br>
 	<label id="costo">Costo:</label>
 	<br>
@@ -64,8 +67,8 @@
 					if (results[0]) {
 						$('#latitude,#longitude').show();
 						$('#origen').val(results[0].formatted_address);
-						$('#latitude').val(marker.getPosition().lat());
-						$('#longitude').val(marker.getPosition().lng());
+						$('#OriginLatitude').val(marker.getPosition().lat());
+						$('#OriginLongitude').val(marker.getPosition().lng());
 						infowindow.setContent(results[0].formatted_address);
 						infowindow.open(map, marker);
 					}
@@ -78,8 +81,8 @@
 					if (status == google.maps.GeocoderStatus.OK) {
 						if (results[0]) {
 							$('#origen').val(results[0].formatted_address);
-							$('#latitude').val(marker.getPosition().lat());
-							$('#longitude').val(marker.getPosition().lng());
+							$('#OriginLatitude').val(marker.getPosition().lat());
+							$('#OriginLongitude').val(marker.getPosition().lng());
 							infowindow.setContent(results[0].formatted_address);
 							infowindow.open(map, marker);
 						}
@@ -92,8 +95,8 @@
 					if (status == google.maps.GeocoderStatus.OK) {
 						if (results[0]) {
 							$('#destino').val(results[0].formatted_address);
-							$('#latitude').val(marker2.getPosition().lat());
-							$('#longitude').val(marker2.getPosition().lng());
+							$('#DestinationLatitude').val(marker2.getPosition().lat());
+							$('#DestinationLongitude').val(marker2.getPosition().lng());
 							infowindow.setContent(results[0].formatted_address);
 							infowindow.open(map, marker2);
 						}
@@ -112,8 +115,8 @@
 					bounds.extend(place.geometry.location);
 					marker.setPosition(place.geometry.location);
 				}
-				$('#latitude').val(marker.getPosition().lat());
-				$('#longitude').val(marker.getPosition().lng());
+				$('#OriginLatitude').val(marker.getPosition().lat());
+				$('#OriginLongitude').val(marker.getPosition().lng());
 				map.fitBounds(bounds);
 				map.setZoom(15);
 			});
@@ -128,8 +131,8 @@
 					bounds.extend(place.geometry.location);
 					marker2.setPosition(place.geometry.location);
 				}
-				$('#latitude').val(marker.getPosition().lat());
-				$('#longitude').val(marker.getPosition().lng());
+				$('#DestinationLatitude').val(marker2.getPosition().lat());
+				$('#DestinationLongitude').val(marker2.getPosition().lng());
 				map.fitBounds(bounds);
 				map.setZoom(15);
 			});

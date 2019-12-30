@@ -112,6 +112,8 @@
 					bounds.extend(place.geometry.location);
 					marker.setPosition(place.geometry.location);
 				}
+				$('#latitude').val(marker.getPosition().lat());
+				$('#longitude').val(marker.getPosition().lng());
 				map.fitBounds(bounds);
 				map.setZoom(15);
 			});
@@ -126,6 +128,8 @@
 					bounds.extend(place.geometry.location);
 					marker2.setPosition(place.geometry.location);
 				}
+				$('#latitude').val(marker.getPosition().lat());
+				$('#longitude').val(marker.getPosition().lng());
 				map.fitBounds(bounds);
 				map.setZoom(15);
 			});

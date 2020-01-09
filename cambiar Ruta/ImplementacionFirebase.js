@@ -10,30 +10,32 @@ const config = {
 };
 firebase.initializeApp(config);
 
-var database;
-database = firebase.database();
-var ref  = database.ref('rtu-cliente');
-ref.on('value', gotData, errData);
+var database = firebase.database();
+var referencia = database.ref('Arrendatario');
+referencia.once()
+.then(function (dataSnapshot){
 
-function gotData(data){
-	console.log(data.val());
-}
-function errData(err){
-	console.log("error");
-	console.log(err);
-}
+});
 
 
-// var taxis = db.collection("taxis");
-// var query = taxis.where("Status", "==", "2");
-
-// db.collection("taxis").where("Status", "==", "2")
-// .get()
-// .then(function(querySnapshot) {
-// 	querySnapshot.forEach(function(doc) {
-// 		console.log(doc.id, " => ", doc.data());
-// 	});
-// })
-// .catch(function(error) {
-// 	console.log("Error getting documents: ", error);
+// ref.orderByChild("status").equalTo(1).on("child_added", function(snapshot) {
+//   console.log(snapshot.key);
 // });
+
+// referencia.on('value', obtenerDatos, errorDatos);
+
+// function obtenerDatos(data){
+// 	var datos = data.val();
+// 	var keys = Object.keys('Arrendatario');
+// 	console.log(keys);
+// 	for (var i = 0; i < keys.length; i++) {
+// 		var k = keys[i];
+// 	}
+// }
+
+
+// function errorDatos(err){
+// 	console.log(err);
+// }
+
+

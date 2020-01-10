@@ -63,6 +63,17 @@
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
 			map = new google.maps.Map(document.getElementById('lienzoMapa'), mapOptions);
+
+			//crear una funcion de creacion de marcadores que se auto ejecute cada cierto tiempo 
+		}
+		var arregloMarcadores = [];
+		function borrarMarcadores() {
+			for (var i = 0; i < arregloMarcadores.length; i++ ) {
+				arregloMarcadores[i].setMap(null);
+			}
+			arregloMarcadores.length = 0;
+		}
+		function marcadores(){
 			firebase.database().ref('Taxis').on('value',(data)=>{
 				data.forEach(function(snapshot){
 					var newPost = snapshot.val();
@@ -82,12 +93,27 @@
 					marker.addListener('click', function() {
 						infowindow.open(map, marker);
 					});
-
+					arregloMarcadores.push(marker);
+					
 				});
 			});
-
-
 		}
+
+		
+		var Intervalo = function intervaloEjecutado(){
+			borrarMarcadores();
+			console.log("Marcadores borrados");
+			marcadores();
+			console.log("Intervalo Ejecutado");
+			
+		};
+		// var Intervalo2 = function intervaloEjecutado2(){
+		// 	borrarMarcadores();
+		// 	console.log("Marcadores Borrados");
+		// };
+		setInterval(Intervalo, 5000);
+		// setInterval(Intervalo2, 1500);
+
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 	

@@ -1,50 +1,43 @@
 <include conexion.php>
     <!doctype html>
     <html lang="en">
-
     <head>
     <!-- Basic Page Needs
         ================================================== -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <!-- Specific Meta
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="Texicab is a modern presentation HTML5 Car Rent template.">
         <meta name="keywords" content="HTML5, Template, Design, Development, Car Rent" />
         <meta name="author" content="">
-
     <!-- Titles
         ================================================== -->
         <title>Radio Taxis Malibú</title>
-
     <!-- Favicons
         ================================================== -->
         <link rel="shortcut icon" href="https://htmlguru.net/carrent-html/assets/images/favicon.ico">
         <link rel="apple-touch-icon" href="https://htmlguru.net/carrent-html/assets/images/apple-touch-icon.png">
         <link rel="apple-touch-icon" sizes="72x72" href="https://htmlguru.net/carrent-html/images/apple-touch-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="https://htmlguru.net/carrent-html/images/apple-touch-icon-114x114.png">
-
     <!-- Custom Font
         ================================================== -->
         <!-- <link href="https://fonts.googleapis.com/css?family=Exo:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7cRoboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet"> -->
         <link href="https://fonts.googleapis.com/css?family=Exo:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%7cRoboto+Slab:400,700" rel="stylesheet">
-
     <!-- CSS
         ================================================== -->
         <link rel="stylesheet" href="https://htmlguru.net/carrent-html/assets/css/plugins.min.css">
         <link rel="stylesheet" href="https://htmlguru.net/carrent-html/assets/css/icons.min.css">
         <link rel="stylesheet" href="assets/css/nuevoEstilo2.css">
         <link rel="stylesheet" href="assets/css/estiloNuevo.css">
-
         <!-- RS5.4 Main Stylesheet -->
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/settings.css">
         <!-- RS5.4 Layers and Navigation Styles -->
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="https://htmlguru.net/carrent-html/assets/revolution/css/navigation.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5rTAKFqIj-htRhtz6VXm0KmEjifIzqm4&libraries=places"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLU85ci7IWOiaKuhn_9e1qlQIIHmus0yY&libraries=places"></script>
         <style>
   /* Always set the map height explicitly to define the size of the div
   * element that contains the map. */
@@ -55,9 +48,7 @@
 </style>
 <script src="https://www.paypal.com/sdk/js?client-id=AQ7iD8xBJADvWSRJ3JE9yYM4UjJEgw-Yb7V5jCBKPD30kQBd57ZI44N3iPD5kLqof5VLRg-58jwvLRdA&currency=MXN"></script>
 </head>
-
 <body>
-
     <!-- ====== Header Top Area ====== --> 
     <header class="header-top-area" style="background-color: #59B8CE">
         <div class="container">
@@ -80,10 +71,8 @@
                         </ul><!-- /.header-top-menu -->
                     </div><!-- /.header-content-left -->
                 </div><!-- /.col-md-9 -->
-
                 <div class="col-md-6 col-sm-5">
                     <div class="header-content-right">
-
                         <ul class="header-top-menu">
                             <li>
                                 <a href="#" class="search-open">
@@ -101,7 +90,6 @@
             </div><!-- /.row -->
         </div><!-- /.container -->
     </header><!-- /.head-area -->
-
     <!-- ======= Header Modal Area =======-->
     <div class="header-modal-area">
         <!-- Modal Search -->
@@ -116,7 +104,6 @@
                 </form>
             </div>
         </div>
-
         <div class="overlay-sidebar">
             <div class="author-area">
                 <a href="#" class="closebtn">&times;</a>
@@ -148,7 +135,6 @@
             </div><!-- /.author-area -->
         </div><!-- /.overlay-sidebar -->
     </div><!-- /.header-modal-area -->
-
     <!-- ====== Header Nav Area ====== --> 
     <header class="header-nav-area">
         <div class="container">        
@@ -219,7 +205,6 @@
                                 <span></span>
                             </a>
                         </div><!--/.menuexpandermain-->
-
                         <div id="mobile-main-nav" class="mb-navigation slideLeft">
                             <div class="menu-wrapper">
                                 <div id="main-mobile-container" class="menu-content clearfix"></div>
@@ -230,8 +215,6 @@
             </div><!-- /.row -->
         </div><!-- /.container -->
     </header><!-- /.header-bottom-area -->
-
-
     <!-- ======= Main Slider Area =======-->
     <div class="slider-block">   
         <div class="rev_slider_wrapper">
@@ -239,7 +222,6 @@
                 <ul>
                     <!-- slide 1 --> 
                     <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
-
                         <!-- main image -->
                         <img src="https://htmlguru.net/carrent-html/assepts/images/slider-car/slider-bg.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                         p
@@ -264,7 +246,6 @@
                         data-responsive_offset="on"
                         style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">El descuento es para ti
                     </div>
-
                     <!-- layer no 2 -->
                     <div class="tp-caption tp-resizeme rev-subheading"
                     data-type="text" 
@@ -284,7 +265,6 @@
                     data-responsive_offset="on"
                     style="z-index: 6; color: #e91e22; font-family: 'Exo', sans-serif; font-weight: 800;">Necesitas un aventón?
                 </div>
-
                 <!-- layer no 3 -->
                 <div class="tp-caption tp-resizeme NotGeneric-Title"
                 data-type="text" 
@@ -304,7 +284,6 @@
                 data-responsive_offset="on"
                 style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 900; text-transform: uppercase;">Escoge<br> El taxi mas cómodo
             </div>
-
             <!-- layer no 4 -->
             <div class="tp-caption rev-subheading tp-resizeme"
             data-type="text" 
@@ -326,7 +305,6 @@
             data-responsive_offset="on"
             style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">El mejor método de viajar seguro
         </div>
-
         <!-- layer no 5 -->
         <div class="tp-caption tp-resizeme"
         data-x="['left','left','left','center']" data-hoffset="['105','105','75','-105']" 
@@ -349,7 +327,6 @@
         style="z-index: 7; font-weight: bold; font-family: 'Exo', sans-serif;">
         <a href="#" class="button black-button slider-button" data-fontsize="['22','22','22','22']">Contacta ahora</a>
     </div>
-
     <!-- layer no 6 -->
     <div class="tp-caption tp-resizeme"
     data-x="['right','right','right','center']" data-hoffset="['0','-15','30','-10']"
@@ -368,10 +345,8 @@
 </li><!-- /.slide 1 -->
 <!-- slide 1 --> 
 <li data-transition="fade" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="materialize Material" data-description="">
-
     <!-- main image -->
     <img src="https://htmlguru.net/carrent-html/assets/images/slider-car/slider-bg.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-
     <!-- layer no 1 -->
     <div class="tp-caption tp-resizeme rev-subheading"
     data-type="text" 
@@ -393,7 +368,6 @@
     data-responsive_offset="on"
     style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">El descuento es para ti
 </div>
-
 <!-- layer no 2 -->
 <div class="tp-caption tp-resizeme rev-subheading"
 data-type="text" 
@@ -413,7 +387,6 @@ data-splitout="none"
 data-responsive_offset="on"
 style="z-index: 6; color: #e91e22; font-family: 'Exo', sans-serif; font-weight: 800;">Necesitas un aventón?
 </div>
-
 <!-- layer no 3 -->
 <div class="tp-caption tp-resizeme NotGeneric-Title"
 data-type="text" 
@@ -433,7 +406,6 @@ data-splitout="none"
 data-responsive_offset="on"
 style="z-index: 7; color: #000000; font-family: 'Exo', sans-serif; font-weight: 900; text-transform: uppercase;">Escoge<br> El Taxi más cómodo
 </div>
-
 <!-- layer no 4 -->
 <div class="tp-caption rev-subheading tp-resizeme"
 data-type="text" 
@@ -455,7 +427,6 @@ data-splitout="none"
 data-responsive_offset="on"
 style="z-index: 5; color: #464646; font-weight: 600; font-family: inherit;">Puedes compartir tus viajes!!!
 </div>
-
 <!-- layer no 5 -->
 <div class="tp-caption tp-resizeme"
 data-x="['left','left','left','center']" data-hoffset="['105','105','75','-105']" 
@@ -478,7 +449,6 @@ data-responsive_offset="on"
 style="z-index: 7; font-weight: bold; font-family: 'Exo', sans-serif;">
 <a href="#" class="button black-button slider-button" data-fontsize="['22','22','22','22']">Contacta ahora</a>
 </div>
-
 <!-- layer no 6 -->
 <div class="tp-caption tp-resizeme"
 data-x="['right','right','right','center']" data-hoffset="['0','-15','30','-10']"
@@ -513,7 +483,6 @@ data-height="none" data-no-retina>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div><!-- /.section-divider -->
-
 <!-- ====== Check Vehicle Area ======  class="time-selector form-controller --> 
 <div style="background-color: #FFC012">
     <input type="text" id="origen" placeholder="Ingresa el origen">
@@ -522,7 +491,6 @@ data-height="none" data-no-retina>
     <div class="col-md-4">
         <input class="date-start date-selector form-controller" id="fecha">
     </div>
-
     <br>
     <div class="input" style=" width: 200px" >
         <input type="text" class="time-selector form-controller" id="horaLlegada">
@@ -533,7 +501,6 @@ data-height="none" data-no-retina>
     <button style="color: black" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="reservar">Reservar</button>
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
@@ -557,7 +524,6 @@ data-height="none" data-no-retina>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
-
 </div>
 </div>
 <br>
@@ -572,7 +538,6 @@ data-height="none" data-no-retina>
 <div id="map-canvas">
     <script>
         var paypalPriceElement;
-
         var myLatLng = { lat: 19.4978, lng: -99.1269 };
         var mapOptions = {
             center: myLatLng,
@@ -588,14 +553,10 @@ data-height="none" data-no-retina>
            map:map,
            draggable: true
        });
-
         var searchBox = new google.maps.places.SearchBox(document.getElementById('origen'));
         var searchBox2 = new google.maps.places.SearchBox(document.getElementById('destino'));
-
         google.maps.event.addListener(searchBox, 'places_changed',function(){
-
          var places = searchBox.getPlaces();
-
          var bounds = new google.maps.LatLngBounds();
          var i, place;
          for(i=0; place=places[i];i++){
@@ -606,12 +567,9 @@ data-height="none" data-no-retina>
       map.setZoom(15);
   })
         google.maps.event.addListener(searchBox2, 'places_changed',function(){
-
          var places = searchBox2.getPlaces();
-
          var bounds = new google.maps.LatLngBounds();
          var i, place;
-
          for(i=0; place=places[i];i++){
           bounds.extend(place.geometry.location);
           marker2.setPosition(place.geometry.location);
@@ -619,10 +577,8 @@ data-height="none" data-no-retina>
       map.fitBounds(bounds);
       map.setZoom(15);
   })
-
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer();
-
         function calcularRuta(){
             var request = {
                 origin: document.getElementById('origen').value,
@@ -654,14 +610,15 @@ data-height="none" data-no-retina>
             });
         }
         document.getElementById('calc').onclick= function(){
-            calcularRuta();
+            if (document.getElementById("origen").value == 'Aeropuerto de Veracruz, Carretera Veracruz-Xalapa, Veracruz, México')  {
+                console.log('no es poosible que el origen sea el aeropuerto');
+            }else{
+                calcularRuta();
+            }
         };
-
-
         document.getElementById('reservar').onclick=function(){
             show();
         };
-
         function agendarViaje(){
             var costo;
             var request = {
@@ -712,7 +669,6 @@ data-height="none" data-no-retina>
                 alert("Viaje programado exitosamente");
             });
         }
-
         if (navigator.geolocation) {
          navigator.geolocation.getCurrentPosition(function (position) {
              initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -720,14 +676,10 @@ data-height="none" data-no-retina>
              marker.setPosition(initialLocation); 
          });
      }
-
-
-
      function calcularCosto(){
         var costo = document.getElementById('cst').innerHTML;
         return costo;
     }
-
     var monto;
     function show() {
      document.getElementById('origenTexto').innerHTML = document.getElementById('origen').value;   
@@ -741,7 +693,6 @@ data-height="none" data-no-retina>
      monto = calcularCosto();
      console.log(monto);
  }
-
  paypal.Buttons({
     createOrder: function(data, actions) {
       return actions.order.create({
@@ -769,17 +720,13 @@ data-height="none" data-no-retina>
     });
   }
 }).render('#paypal-button-container');
-
 </script>
 </div>
 </div>
-
-
 <!-- ======footer area======= -->
 <div class="container footer-top-border">
   <div class="vehicle-multi-border yellow-black"></div><!-- /.vehicle-multi-border -->
 </div><!-- /.container -->
-
 <footer class="footer-block bg-black" style="background-color: #59B8CE">
   <div class="container">
       <!-- footer-top-block -->
@@ -809,7 +756,6 @@ data-height="none" data-no-retina>
                       </ul> 
                   </div><!-- /.widget -->
               </div><!-- /.col-md-3 -->
-
               <div class="col-md-3 col-sm-4">
                   <div class="widget widget_hot_contact">
                       <h3 class="widget-title">
@@ -836,10 +782,8 @@ data-height="none" data-no-retina>
                       </form><!-- /.subscribes-newsletter -->
                   </div><!-- /.widget -->
               </div><!-- /.col-md-3 -->
-
           </div><!-- /.row -->
       </div><!-- /.footer-top-block -->
-
       <!-- footer-bottom-block -->
       <div class="footer-bottom-block">            
           <div class="row">
@@ -861,16 +805,13 @@ data-height="none" data-no-retina>
       </div><!-- /.footer-bottom-block -->
   </div><!-- /.container -->
 </footer><!-- /.footer-block -->
-
                                                   <!-- All The JS Files
                                                       ================================================== --> 
                                                       <script src="https://htmlguru.net/carrent-html/assets/js/plugins.min.js"></script>
                                                       <script src="https://htmlguru.net/carrent-html/assets/js/carrent.min.js"></script> <!-- main-js -->
-
                                                       <!-- RS5.4 Core JS Files -->
                                                       <script src="https://htmlguru.net/carrent-html/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
                                                       <script src="https://htmlguru.net/carrent-html/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
-
                                                       <script>
                                                         jQuery(document).ready(function() {
                                                             var $sliderSelector = jQuery(".carrent-slider");
@@ -918,7 +859,6 @@ data-height="none" data-no-retina>
                                                             });
                                                         });
                                                     </script>
-
                                                     <!-- SLIDER REVOLUTION 5.4 EXTENSIONS  (Load Extensions only on Local File Systems! The following part can be removed on Server for On Demand Loading) -->
                                                     <script src="https://htmlguru.net/carrent-html/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
                                                     <script src="https://htmlguru.net/carrent-html/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>

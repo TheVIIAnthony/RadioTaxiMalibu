@@ -546,37 +546,37 @@ data-height="none" data-no-retina>
         };
         var map =  new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         var marker = new google.maps.Marker({
-           map:map,
-           draggable: true
-       });
+         map:map,
+         draggable: true
+     });
         var marker2 = new google.maps.Marker({
-           map:map,
-           draggable: true
-       });
+         map:map,
+         draggable: true
+     });
         var searchBox = new google.maps.places.SearchBox(document.getElementById('origen'));
         var searchBox2 = new google.maps.places.SearchBox(document.getElementById('destino'));
         google.maps.event.addListener(searchBox, 'places_changed',function(){
-         var places = searchBox.getPlaces();
-         var bounds = new google.maps.LatLngBounds();
-         var i, place;
-         for(i=0; place=places[i];i++){
-          bounds.extend(place.geometry.location);
-          marker.setPosition(place.geometry.location);
-      }
-      map.fitBounds(bounds);
-      map.setZoom(15);
-  })
+           var places = searchBox.getPlaces();
+           var bounds = new google.maps.LatLngBounds();
+           var i, place;
+           for(i=0; place=places[i];i++){
+              bounds.extend(place.geometry.location);
+              marker.setPosition(place.geometry.location);
+          }
+          map.fitBounds(bounds);
+          map.setZoom(15);
+      })
         google.maps.event.addListener(searchBox2, 'places_changed',function(){
-         var places = searchBox2.getPlaces();
-         var bounds = new google.maps.LatLngBounds();
-         var i, place;
-         for(i=0; place=places[i];i++){
-          bounds.extend(place.geometry.location);
-          marker2.setPosition(place.geometry.location);
-      }
-      map.fitBounds(bounds);
-      map.setZoom(15);
-  })
+           var places = searchBox2.getPlaces();
+           var bounds = new google.maps.LatLngBounds();
+           var i, place;
+           for(i=0; place=places[i];i++){
+              bounds.extend(place.geometry.location);
+              marker2.setPosition(place.geometry.location);
+          }
+          map.fitBounds(bounds);
+          map.setZoom(15);
+      })
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer();
         function calcularRuta(){
@@ -612,8 +612,27 @@ data-height="none" data-no-retina>
         document.getElementById('calc').onclick= function(){
             if (document.getElementById("origen").value == 'Aeropuerto de Veracruz, Carretera Veracruz-Xalapa, Veracruz, México')  {
                 console.log('no es poosible que el origen sea el aeropuerto');
-            }else{
-                calcularRuta();
+            }
+            if (document.getElementById('destino').value == 'Aeropuerto de Veracruz, Carretera Veracruz-Xalapa, Veracruz, México') {
+                var request = {
+                    origin: document.getElementById('origen').value,
+                    destination: document.getElementById('destino').value,
+                    travelMode: 'DRIVING'
+                };
+                directionsService.route(request, function(result, Status){
+                    var TotalDistancia = result.routes[0].legs[0].distance.text;
+                    var DistanciaNum = parseFloat(TotalDistancia);
+                    var costo = DistanciaNum * 20;
+
+                    document.getElementById('cst').innerHTML = costo;
+                    document.getElementById('dstnc').innerHTML = DistanciaNum;
+                    paypalPriceElement = document.getElementById('paypalPrice');
+                    paypalPriceElement.value = costo;
+                    if (Status == "OK") {
+                        directionsDisplay.setDirections(result);
+                        directionsDisplay.setMap(map);
+                    }
+                });
             }
         };
         document.getElementById('reservar').onclick=function(){
@@ -670,30 +689,30 @@ data-height="none" data-no-retina>
             });
         }
         if (navigator.geolocation) {
-         navigator.geolocation.getCurrentPosition(function (position) {
-             initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-             map.setCenter(initialLocation);
-             marker.setPosition(initialLocation); 
-         });
-     }
-     function calcularCosto(){
+           navigator.geolocation.getCurrentPosition(function (position) {
+               initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+               map.setCenter(initialLocation);
+               marker.setPosition(initialLocation); 
+           });
+       }
+       function calcularCosto(){
         var costo = document.getElementById('cst').innerHTML;
         return costo;
     }
     var monto;
     function show() {
-     document.getElementById('origenTexto').innerHTML = document.getElementById('origen').value;   
-     document.getElementById('destinoTexto').innerHTML = document.getElementById('destino').value;   
-     document.getElementById('fechaTexto').innerHTML = document.getElementById('fecha').value;
-     document.getElementById('llegadaTexto').innerHTML = document.getElementById('horaLlegada').value;
-     document.getElementById('nombreTexto').innerHTML = document.getElementById('nombre').value;
-     document.getElementById('telefonoTexto').innerHTML = document.getElementById('telefono').value;
-     document.getElementById('costoTexto').innerHTML = document.getElementById('cst').value;
-     document.getElementById('costoTexto').innerHTML = document.getElementById('paypalPrice').value;
-     monto = calcularCosto();
-     console.log(monto);
- }
- paypal.Buttons({
+       document.getElementById('origenTexto').innerHTML = document.getElementById('origen').value;   
+       document.getElementById('destinoTexto').innerHTML = document.getElementById('destino').value;   
+       document.getElementById('fechaTexto').innerHTML = document.getElementById('fecha').value;
+       document.getElementById('llegadaTexto').innerHTML = document.getElementById('horaLlegada').value;
+       document.getElementById('nombreTexto').innerHTML = document.getElementById('nombre').value;
+       document.getElementById('telefonoTexto').innerHTML = document.getElementById('telefono').value;
+       document.getElementById('costoTexto').innerHTML = document.getElementById('cst').value;
+       document.getElementById('costoTexto').innerHTML = document.getElementById('paypalPrice').value;
+       monto = calcularCosto();
+       console.log(monto);
+   }
+   paypal.Buttons({
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{
